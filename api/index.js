@@ -19,10 +19,13 @@
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 const server = require('./src/app.js');
 const { conn } = require('./src/db.js');
+const {getTemps} = require ('./src/api-calls/temps.js')
 
 // Syncing all the models at once.
-conn.sync({ force: false }).then(() => {
-  server.listen(3001, () => {
+// getTemps();
+conn.sync({ force: true }).then(() => {
+  server.listen(3001, async () => {
+    const preload = await getTemps()
     console.log('%s listening at 3001'); // eslint-disable-line no-console
   });
 });
