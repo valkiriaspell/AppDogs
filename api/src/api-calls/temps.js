@@ -1,5 +1,6 @@
 const {API_KEY} = process.env;
 const axios = require ('axios');
+const { Dogs, Temperaments } = require('../db.js')
 
 const getTemps = async (req, res, next) => {
     try {
@@ -12,12 +13,26 @@ const getTemps = async (req, res, next) => {
             if (!uniqueTemps.includes(temps[i])) {
                 uniqueTemps.push(temps[i])
             }            
-        } 
-        res.send(uniqueTemps); 
-    } catch (err) {
-       next(err);
-    }
- } 
+        }        
+        let dbTemps = await Promise.all( 
+                uniqueTemps.map (t => {
+                    let dogTemp = {
+                        name: t
+                    };
+
+            Temperaments.findOrCreate({
+            where: dogTemp
+            })
+        }))
+        return res.send(dbTemps)
+    }    
+    catch (err) {
+      next(err);
+    }     
+} 
+        
+             
+        
 
  module.exports = {
      getTemps,
