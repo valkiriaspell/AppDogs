@@ -5,8 +5,7 @@ module.exports = (sequelize) => {
   // modelo tabla de dogs
   sequelize.define('dogs', {
     id: {
-      type: DataTypes.UUID,
-      defaultValue: DataTypes.UUIDV1,
+      type: DataTypes.UUID,      
       allowNull: false,
       primaryKey: true,
     },    
@@ -22,6 +21,8 @@ module.exports = (sequelize) => {
 
     image: {
     type: DataTypes.TEXT,    
-  },
-})
+  } 
+}, {
+    timestamps: false
+});
 };
