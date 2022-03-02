@@ -19,13 +19,13 @@
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 const server = require('./src/app.js');
 const { conn } = require('./src/db.js');
-const {getTemps} = require ('./src/api-calls/temps.js')
+const {saveTemps} = require ('./src/api-calls/temps.js')
 
 // Syncing all the models at once.
 // getTemps();
 conn.sync({ force: true }).then(() => {
   server.listen(3001, async () => {
-    const preload = await getTemps()
+    const preload = await saveTemps()
     console.log('%s listening at 3001'); // eslint-disable-line no-console
   });
 });

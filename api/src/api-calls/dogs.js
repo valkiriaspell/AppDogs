@@ -6,8 +6,9 @@ const {Op} = require('sequelize')
 
 
 const getDogs = async (req, res, next) => {
-    const {name} = req.query;
-    const {temps} = req.query;
+    let { order, page } = req.query
+    let {name} = req.query;
+    let {temps} = req.query;
     
     //junto dogs de la api y de mi db
      try {            
@@ -19,9 +20,9 @@ const getDogs = async (req, res, next) => {
                     weight: dog.weight.metric,
                     height: dog.height.metric,
                     name: dog.name,
+                    temperament: dog.temperament,
                     life_span: dog.life_span,
-                    image: dog.image.url,
-                    temperament: dog.temperament
+                    image: dog.image.url
                 }
             })
             //desde aqui un array con dogs de api
@@ -29,26 +30,43 @@ const getDogs = async (req, res, next) => {
         //desde aqui array con dogs de db
             let dogs =  [...dbDogs, ...apiDogs];
         //junto apidogs y dbdogs
+        
 
             //si me llega name y temps, o alguno de ellos filtro:   (funciona)
-            if(name && temps) {
-                  
-                dogs = await dogs.filter(e => e.name.toLowerCase().includes(name.toLowerCase()) && e.temperament.toLowerCase().includes(temps.toLowerCase()))
-                dogs.length > 0? res.json(dogs) : res.status(400).json({mesagge: 'Not Found'})
-                }
             
-            if(name) {
+            if(name && name !== "") {
                     
-                    dogs = await dogs.filter(e => e.name.toLowerCase().includes(name.toLowerCase()))                
-                dogs.length > 0? res.json(dogs) : res.status(400).json({mesagge: 'Not Found'})
-                }
+                    dogs = dogs.filter(d => d.name.toLowerCase().includes(name.toLowerCase()))                
+                // dogs.length > 0? res.json(dogs) : res.status(400).json({mesagge: 'Not Found'})
+                          }
             if(temps) {
-                      
-                        dogs = await dogs.filter(e => e.temperament.toLowerCase().includes(temps.toLowerCase()))   
-                        dogs.length > 0? res.json(dogs) : res.status(400).json({mesagge: 'Not Found'})
-                }            
-            
-            res.json(dogs) //te tiro todos los perros
+                      console.log(apiDogs[1])                      
+                        let originalDogs = apiDogs.filter(d =>d.temperament?d.temperament.toLowerCase().includes(temps.toLowerCase()):false)   
+                        let createdDogs = dbDogs.filter(d => d.temperaments.includes(temps.toLowerCase()))
+                        dogs = originalDogs;   
+                        // dogs.length > 0? res.json(dogs) : res.status(400).json({mesagge: 'Not Found'})
+                }
+            else if(order === "asc" || !order || order === ""){
+                    dogs = dogs.sort((a,b) =>{
+                        return a.name.toLowerCase().localeCompare(b.name.toLowerCase())
+                    })
+                    // res.json(dogs)
+                }else{
+                    dogs = dogs.sort((a,b) =>{
+                        return b.name.toLowerCase().localeCompare(a.name.toLowerCase())
+                    })
+                    // res.json(dogs)
+                }
+                //para el paginado, mostrando de a 8 perros         
+                page = page ? page : 1 
+                const charXPage = 8;
+                let result = dogs.slice((charXPage * (page -  1)) , (charXPage * (page -  1)) + charXPage )
+                //
+                
+                return res.send({
+                    result: result, 
+                    count: dogs.length
+                })
         }catch(e){
             next(e)
         }
