@@ -1,0 +1,15 @@
+.landingText {
+    color: white;
+    font-size: 95px;
+    text-shadow: 0.1em 0.1em 0.2em black;
+    text-shadow: inset 0.5em 0.7em 0.8em black;
+    padding-top: 80px;
+}
+
+.landingBox {
+    background-color: rgba(51, 14, 0, 0.836);
+    margin-left: 390px;
+    margin-right:  390px;   
+    border-radius: 5%; 
+}
+

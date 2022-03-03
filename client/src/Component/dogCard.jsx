@@ -12,13 +12,13 @@ export class DogCard extends Component {
 
         return (
             <div className='Card'>
-                {/* <Link to={`/dogs/${this.props.id}`}><h3>{this.props.name}</h3></Link> */}
                 <div className='imgDog' style={divStyle}> </div>
+                {/* <Link to={`/dogs/${this.props.id}`}><h3>{this.props.name}</h3></Link> */}
                 <div className="dogCard">
             <table>
             <thead>
             <tr>
-            <th colspan="3"><strong>{this.props.name}</strong></th>
+            <th colSpan="3"><strong>{this.props.name}</strong></th>
              </tr>
             </thead>
             <tbody>

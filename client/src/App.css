@@ -1,8 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=Baloo+Paaji+2:wght@400;500&display=swap");
+
 .App {
   text-align: center;
   background-image: url(./images/fondo-PIDOGS.png);
-  background-repeat:repeat ;  
-  background-size: contain;    
+  background-repeat:no-repeat;
+  background-size: cover;
+  min-height: 100vh;
+  font-family: "Patrick Hand",cursive;    
   
 }
 

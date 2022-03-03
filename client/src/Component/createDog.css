@@ -1,0 +1,37 @@
+.danger {
+    color: red;
+    font-size: 10px;
+  }
+  
+  input.danger {
+    border: 2px solid red;
+  }
+
+  .formDog {
+    align-self: center;
+    align-content: center;  
+    display: flex;
+    align-items: center;
+    flex-direction: column;    
+    background: rgba(0, 0, 0, 0.692);
+    width: 500px;
+    margin: auto;
+    justify-content: space-between;    
+    padding: 15px;
+    color: rgb(255, 255, 255);            
+    padding-left: 30px;          
+    
+  }
+
+  input {
+    width: 350px;
+    padding: 10px 16px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;  
+  }
+  label {
+      text-align: left;
+  }
