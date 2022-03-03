@@ -12,20 +12,35 @@ export class Dogs extends Component {
   }
   render() {
     return (
+        <div>   <ul className="pages">
+        <button className="Paged_numbers">1</button>
+        <button className="Paged_numbers">2</button>
+        <button className="Paged_numbers">3</button>
+        <button className="Paged_numbers">4</button>
+        <button className="Paged_numbers">5</button>
+        <button className="Paged_numbers">6</button>
+        <button className="Paged_numbers">7</button>
+        <button className="Paged_numbers">8</button>
+        <button className="Paged_numbers">9</button>          
+        <button className="Paged_numbers">10</button>          
+        <button className="Paged_numbers">11</button>          
+        <button className="Paged_numbers">12</button>          
+        <button className="Paged_numbers">13</button>          
+        <button className="Paged_numbers">14</button>        
+    </ul>
       <div className='dogsContainer'>
-        <h1>Perros</h1>
-        {/* <img src={image} alt="main-img"></img> */}
-        <h3>Dogs</h3>
         {this.props.dogs?.map((dog) => (
           <DogCard
             key={dog.id}            
             name={dog.name}
             height={dog.height}
             weight={dog.weight}
+            life_span={dog.life_span}
             temperament={dog.temperament}
             image={dog.image}
           />
         ))}
+      </div>
       </div>
     );
   }

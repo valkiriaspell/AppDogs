@@ -2,6 +2,44 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    align-content: center;
+    align-items: center;    
     font-family: "Fredoka One",cursive;
     font-size: 20px;
   }
+
+  .pages {
+    color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-left: 30%;
+    margin-right: 30%;
+    background: rgba(0, 0, 0, 0.835);
+    border-radius: 10px;
+    padding: 0.2%;
+  }
+
+  .Paged_numbers {
+    color: rgb(255, 255, 255);
+    background-color: transparent;    
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    
+    padding: 5px;
+  }
+  .Paged_numbers:hover {
+    color: orangered;
+    font-weight: bold;
+  }
+  ul {
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 20px;
+    text-align: center;
+}

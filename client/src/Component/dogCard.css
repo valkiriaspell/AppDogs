@@ -1,28 +1,92 @@
 @import url("https://fonts.googleapis.com/css2?family=Baloo+Paaji+2:wght@400;500&display=swap");
 
+.card{
+  display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    vertical-align: top;
+    
+  }
+  .imgDog {
+    display: block;
+    margin-top: 20px;
+    height: 250px;
+    width: 150px;
+    background-size:cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 20px;   
+    border-radius: 10%;
+    margin-bottom: -30px;
+   
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.692);
+    cursor: pointer;       
+    
+  }
+
 .dogCard {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    flex-wrap: wrap;
+    justify-content: space-between;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.849);  
     margin: 10px;
-    border-radius: 30px;
-    width: 250px;
-    background: rgba(26, 15, 1, 0.712);
+    text-align: center;
+    border-radius: 10px;
+    width: 300px;    
+    background: rgba(228, 228, 228, 0.712);
     -webkit-backdrop-filter: blur(5px);
     backdrop-filter: blur(5px);
-    padding: 5px;
+    vertical-align:auto;
+    padding: 10px;
+    padding-left: 20px;
     font-family: "Patrick Hand",cursive;
-    font-size: 25px;
+    font-size: 16px;
     transition: all .3s ease;
-    color: white;   
+    color: rgb(131, 48, 1);   
+    min-height: 250px;
   }
   .dogCard:hover{
     transform: translateY(6px);
     transition: 450ms ease-in-out;
   }
-  .imgDog {
-    max-width: 200px;
-    max-height: 150px;
-    border-radius: 5px; 
+  
+  .btnSeeDog {
+    background-color: rgba(255, 68, 0, 0.726);
+    color: white;
+    cursor: pointer;
+    border: none;
+    width: 90px;
+    box-shadow: 0.1em 0.1em 0.2em black;  
+    margin: 15px;
+    padding: 10px;
+    vertical-align: bottom;
   }
+
+  .btnSeeDog:hover {
+    background-color: rgba(158, 47, 7, 0.952);
+    transition: 300ms ease-in-out;
+  }
+
+ thead tr {
+    align-items: center;
+    text-align: center;
+    margin-left: 50px;
+  }
+  thead {
+    align-self: center;
+    align-content: center;
+    align-items: center;
+    text-align: center;
+    margin-left: 50px;
+    
+  }
+
+  th {text-align:center}
+
+  tr {
+    vertical-align: top;
+  }
+
+ 

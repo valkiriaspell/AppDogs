@@ -42,7 +42,7 @@ const getDogs = async (req, res, next) => {
             //ici j'ai mélangé les deux chiens d'api avec les chiens de ma db
         
         
-
+console.log(dogs[4])
            
             
             if(name && name !== "") {
@@ -133,7 +133,7 @@ const getDogs = async (req, res, next) => {
             }))            
     
         let dogs =  [...dbDogs, ...apiDogs];
-        console.log(dogs) 
+        
 
     if (id) {
         dogs = dogs.find(e => e.id == id)    
