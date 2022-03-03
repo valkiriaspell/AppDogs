@@ -10,24 +10,24 @@ const getDogs = async (req, res, next) => {
     let {name} = req.query;
     let {temps} = req.query;
     
-    //junto dogs de la api y de mi db
-     try {            
-            let apiDogs = await axios(`https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}`);              
-            apiDogs = apiDogs.data.map(dog =>  {
+    try {            
+        let apiDogs = await axios(`https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}`);              
+        apiDogs = apiDogs.data.map(dog =>  {
             return {
-                    id: dog.id,
-                    name: dog.name,
-                    weight: dog.weight.metric,
-                    height: dog.height.metric,
-                    name: dog.name,
-                    temperament: dog.temperament,
-                    life_span: dog.life_span,
-                    image: dog.image.url
-                }
-            })
-            //hasta aqui un array con dogs de api
-            let dbDogs = await Dogs.findAll({include: Temperaments})
-            dbDogs = await  dbDogs.map(({id, name, height, weight, temperaments, image, life_span}) => ({
+                id: dog.id,
+                name: dog.name,
+                weight: dog.weight.metric,
+                height: dog.height.metric,
+                name: dog.name,
+                temperament: dog.temperament,
+                life_span: dog.life_span,
+                image: dog.image.url
+            }
+        })
+        //ici j'ai un tableau avec les chiens d'api
+        //
+        let dbDogs = await Dogs.findAll({include: Temperaments})
+        dbDogs = await  dbDogs.map(({id, name, height, weight, temperaments, image, life_span}) => ({
                 id,
                 name,
                 height,
@@ -35,15 +35,15 @@ const getDogs = async (req, res, next) => {
                 temperament: temperaments.map(e => e.name).join(', '),
                 image,
                 life_span
-            }))
+            }))            
+            //ici j'ai un tableau avec les chiens d'mon database
             
-        //hasta aqui array con dogs de db
-        console.log("basedogs",dbDogs)
             let dogs =  [...dbDogs, ...apiDogs];
-        //junto apidogs y dbdogs
+            //ici j'ai mélangé les deux chiens d'api avec les chiens de ma db
+        
         
 
-            //si me llega name y temps, o alguno de ellos filtro:   (funciona)
+           
             
             if(name && name !== "") {
                     
@@ -67,12 +67,12 @@ const getDogs = async (req, res, next) => {
                     })
                     // res.json(dogs)
                 }
-                //para el paginado, mostrando de a 8 perros         
+                //pour la recherche par page, par 8 chiens      
                 page = page ? page : 1 
                 const charXPage = 8;
                 let result = dogs.slice((charXPage * (page -  1)) , (charXPage * (page -  1)) + charXPage )
                 //
-                result.length > 0? res.json(dogs) : res.status(400).json({mesagge: 'Does not exist'})
+                result.length > 0? res.json(result) : res.status(400).json({mesagge: 'Does not exist'})
                 // return res.send({
                 //     result: result, 
                 //     count: dogs.length
@@ -110,6 +110,7 @@ const getDogs = async (req, res, next) => {
         let apiDogs = await axios(`https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}`);              
         apiDogs = apiDogs.data.map(dog =>  {
         return {
+                id: dog.id,
                 name: dog.name,
                 weight: dog.weight.metric,
                 height: dog.height.metric,
@@ -119,15 +120,27 @@ const getDogs = async (req, res, next) => {
                 temperament: dog.temperament
             }
         })
-        //desde aqui un array con dogs de api
+       
         let dbDogs = await Dogs.findAll({include: Temperaments})
-    //desde aqui array con dogs de db
+        dbDogs = await  dbDogs.map(({id, name, height, weight, temperaments, image, life_span}) => ({
+                id,
+                name,
+                height,
+                weight,
+                temperament: temperaments.map(e => e.name).join(', '),
+                image,
+                life_span
+            }))            
+    
         let dogs =  [...dbDogs, ...apiDogs];
-    //junto apidogs y dbdogs
+        console.log(dogs) 
+
     if (id) {
-        dogs = await dogs.find(e => e.id === id)
-    res.json(dogs)
-    } 
+        dogs = dogs.find(e => e.id == id)    
+    }
+  
+    dogs? res.json(dogs) : res.status(400).json({mesagge: 'Not Found'})
+
  } catch(e) {
     next(e)
     }

@@ -1,0 +1,7 @@
+.dogsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    font-family: "Fredoka One",cursive;
+    font-size: 20px;
+  }

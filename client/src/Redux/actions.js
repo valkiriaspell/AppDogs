@@ -14,10 +14,10 @@ export const ORDER_BY_WEIGHT = 'ORDER_BY_WEIGHT'
 export const getAllDogs = name => async dispatch => {
     try{
         if(name) {
-             const res = await axios.get(`http://localhost:3001/dogs?name=${name}`)
+             const res = await axios.get(`http://localhost:3001/dogs?name=${name}&page=1`)
             return dispatch({ type: GET_ALL_DOGS, payload: res.data })
             }
-        const res2 = await axios.get('http://localhost:3001/dogs')
+        const res2 = await axios.get('http://localhost:3001/dogs?page=1')
         return dispatch({ type: GET_ALL_DOGS, payload: res2.data })
     }catch(e) {
         console.log(e)
