@@ -2,7 +2,7 @@ const {API_KEY} = process.env;
 const axios = require ('axios');
 const { Dogs, Temperaments } = require('../db.js')
 const { v4: v4, version } = require('uuid');
-const {Op} = require('sequelize')
+
 
 
 const getDogs = async (req, res, next) => {
@@ -25,9 +25,20 @@ const getDogs = async (req, res, next) => {
                     image: dog.image.url
                 }
             })
-            //desde aqui un array con dogs de api
+            //hasta aqui un array con dogs de api
             let dbDogs = await Dogs.findAll({include: Temperaments})
-        //desde aqui array con dogs de db
+            dbDogs = await  dbDogs.map(({id, name, height, weight, temperaments, image, life_span}) => ({
+                id,
+                name,
+                height,
+                weight,
+                temperament: temperaments.map(e => e.name).join(', '),
+                image,
+                life_span
+            }))
+            
+        //hasta aqui array con dogs de db
+        console.log("basedogs",dbDogs)
             let dogs =  [...dbDogs, ...apiDogs];
         //junto apidogs y dbdogs
         
@@ -40,10 +51,9 @@ const getDogs = async (req, res, next) => {
                 // dogs.length > 0? res.json(dogs) : res.status(400).json({mesagge: 'Not Found'})
                           }
             if(temps) {
-                      console.log(apiDogs[1])                      
-                        let originalDogs = apiDogs.filter(d =>d.temperament?d.temperament.toLowerCase().includes(temps.toLowerCase()):false)   
-                        let createdDogs = dbDogs.filter(d => d.temperaments.includes(temps.toLowerCase()))
-                        dogs = originalDogs;   
+                                           
+                        dogs = dogs.filter(d =>d.temperament?d.temperament.toLowerCase().includes(temps.toLowerCase()):false)   
+                        
                         // dogs.length > 0? res.json(dogs) : res.status(400).json({mesagge: 'Not Found'})
                 }
             else if(order === "asc" || !order || order === ""){
@@ -62,11 +72,11 @@ const getDogs = async (req, res, next) => {
                 const charXPage = 8;
                 let result = dogs.slice((charXPage * (page -  1)) , (charXPage * (page -  1)) + charXPage )
                 //
-                
-                return res.send({
-                    result: result, 
-                    count: dogs.length
-                })
+                result.length > 0? res.json(dogs) : res.status(400).json({mesagge: 'Does not exist'})
+                // return res.send({
+                //     result: result, 
+                //     count: dogs.length
+                // })
         }catch(e){
             next(e)
         }
