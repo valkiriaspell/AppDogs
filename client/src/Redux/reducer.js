@@ -41,12 +41,12 @@ const rootReducer = (state = initialState, action) => {
         //                 ...state,
         //                 dogs: []
         //             };
-        //         case GET_ALL_TEMPERAMENTS:
-        //             return {
-        //                 ...state,
-        //                 temperaments: action.payload,
+                case GET_ALL_TEMPERAMENTS:
+                    return {
+                        ...state,
+                        temperaments: action.payload,
                         
-        //             };
+                    };
         //         case FILTER_BY_TEMPERAMENT :
         //             let allDogs = state.allDogs
         //             allDogs = allDogs.filter(d => d.temperament !== undefined)

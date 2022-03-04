@@ -23,3 +23,12 @@ export const getAllDogs = name => async dispatch => {
         console.log(e)
     }
 }
+
+export const getAllTemperaments = () => async dispatch => {
+    try{
+        const res = await axios.get('/temperaments')
+        return dispatch({ type: GET_ALL_TEMPERAMENTS, payload: res.data })
+    }catch(e) {
+        console.log(e)
+    }
+}
