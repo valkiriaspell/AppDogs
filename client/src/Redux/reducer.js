@@ -1,11 +1,13 @@
-import{GET_ALL_DOGS, GET_DOG, CREATE_DOG, UNMOUNT_ALL_DOGS, GET_ALL_TEMPERAMENTS, GET_DOG_BY_NAME, FILTER_BY_TEMPERAMENT, FILTER_CREATED, ORDER_BY_NAME, ORDER_BY_WEIGHT} from './actions.js'
+import{GET_ALL_DOGS, GET_DOG, CREATE_DOG, UNMOUNT_ALL_DOGS, GET_ALL_TEMPERAMENTS, REMOVE_DOG, GET_DOG_BY_NAME, FILTER_BY_TEMPERAMENT, FILTER_CREATED, ORDER_BY_NAME, ORDER_BY_WEIGHT} from './actions.js'
 
 
 const initialState = {
     dogs: [],
     allDogs: [],
     temperaments: [],
-    dog: {}
+    dog: {},
+    name: "",
+    order: "",
 }
 
 const rootReducer = (state = initialState, action) => {
@@ -16,12 +18,16 @@ const rootReducer = (state = initialState, action) => {
                 dogs: action.payload,
                 allDogs: action.payload
             };
-        // case GET_DOG:
-        //     console.log("SHOW ME",  action.payload)
-        //     return{
-        //         ...state,
-        //         dog: action.payload
-        //     };
+        case GET_DOG:
+        return{
+            ...state,
+            dog: action.payload
+        }
+        case REMOVE_DOG:
+            return{
+                ...state,
+                dog: action.payload
+            }
         //     case GET_DOG_BY_NAME:
         //         return{
         //             ...state,

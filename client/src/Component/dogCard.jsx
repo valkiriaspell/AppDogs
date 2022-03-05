@@ -1,19 +1,17 @@
 import React, { Component } from 'react';
 import './dogCard.css';
 // import { connect } from 'react-redux';
-// import { deleteDog, DELETE_DOG } from '../../redux/actions';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 export class DogCard extends Component {
-    
     render() {
+        
         var divStyle = {  backgroundImage: 'url(' + this.props.image + ')',  width: '300px'}
-
         return (
             <div className='Card'>
-                <div className='imgDog' style={divStyle}> </div>
-                {/* <Link to={`/dogs/${this.props.id}`}><h3>{this.props.name}</h3></Link> */}
+                <Link to={`/home/${this.props.id}`}><div className='imgDog' style={divStyle}> </div></Link>
+                
                 <div className="dogCard">
             <table>
             <thead>
@@ -23,11 +21,11 @@ export class DogCard extends Component {
             </thead>
             <tbody>
                 <tr>
-                    <td>Weight min:</td>
+                    <td>Min Weight:</td>
                     <td>{this.props.weight.slice(0,2)} Kg.</td>
                 </tr>
                 <tr>
-                    <td>Weight max:</td>
+                    <td>Max Weight:</td>
                     <td>{this.props.weight.slice(-2)} Kg.</td>
                 </tr>
                 <tr>
@@ -39,7 +37,7 @@ export class DogCard extends Component {
                 {/* <p>Life_span: {this.props.life_span}</p>  */}
                 </tbody>                               
             </table>
-                <button className='btnSeeDog'>See more</button>
+            <Link to={`/home/${this.props.id}`}><button className='btnSeeDog'>See more</button></Link>
                 </div>
             </div>
             
@@ -47,6 +45,6 @@ export class DogCard extends Component {
     };
 };
 
-// export const mapDispatchToProps = {deleteHouse}  ;
+
 
 export default DogCard;

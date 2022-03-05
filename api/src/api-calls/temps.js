@@ -18,8 +18,7 @@ const saveTemps = async () => {
             return {
                 name: t,               
             }
-        }) 
-        
+        })         
         
         //ahora tengo un array de objetos con [ {name: "string"}, {name: "string"}]
       newTemps = await Promise.all(newTemps.map(t=> Temperaments.findOrCreate({where:t})))       

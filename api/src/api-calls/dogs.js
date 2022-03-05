@@ -18,7 +18,7 @@ const getDogs = async (req, res, next) => {
                 name: dog.name,
                 weight: dog.weight.metric,
                 height: dog.height.metric,
-                name: dog.name,
+                source: "API",
                 temperament: dog.temperament,
                 life_span: dog.life_span,
                 image: dog.image.url

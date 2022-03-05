@@ -1,0 +1,44 @@
+.dogDetail {
+    display: flex;
+    flex-direction: row;
+    justify-content:space-around;    
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.849);  
+    margin: 10px;
+    text-align: center;
+    border-radius: 10px;
+    margin-left: 100px;
+    margin-right: 100px;    
+    background: rgba(228, 228, 228, 0.712);
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+    vertical-align:auto;
+    padding: 10px;
+    padding-left: 20px;
+    font-family: "Patrick Hand",cursive;
+    font-size: 16px;
+    transition: all .3s ease;
+    color: rgb(131, 48, 1);   
+    min-height: 550px;
+    align-self: center;
+}
+
+.Load {
+    color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-shadow: 5px 5px 10px rgba(160, 51, 0, 0.924);
+    font-size: 26px;
+}
+ .imgDetail{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;    
+ }
+
+ .detail{
+     font-size: 24px;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+ }
