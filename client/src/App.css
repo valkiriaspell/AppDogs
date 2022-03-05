@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Baloo+Paaji+2:wght@400;500&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Hubballi&family=Josefin+Sans:wght@500&family=League+Gothic&display=swap');
 
 .App {
   text-align: center;
@@ -6,7 +6,7 @@
   background-repeat:no-repeat;
   background-size: cover;
   min-height: 100vh;
-  font-family: "Patrick Hand",cursive;    
+  font-family: 'Josefin Sans', sans-serif;   
   
 }
 

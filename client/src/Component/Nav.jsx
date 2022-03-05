@@ -16,7 +16,7 @@ const history = useHistory();
             <button  className="btn draw-border" onClick={() => history.push('/home')}>Home</button>
                
                 
-            <button  className="btn draw-border" onClick={() => history.push('/home/createDog')}>Add New Breed</button>
+            <button  className="btn draw-border" onClick={() => history.push('/createDog')}>Add New Breed</button>
           
             </div>
         </div>

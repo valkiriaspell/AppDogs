@@ -18,10 +18,11 @@ const index = ({ dog }) => {
                     <LandingPage> </LandingPage> 
                 </Route>
                 <Route path='/home' component={Nav} />
+                <Route path='/createDog' component={Nav} />
+                <Route exact path="/home/:id" component={DogById}/>
                 <Route exact path="/home"> 
                 <Dogs></Dogs></Route>
-                <Route path="/home/:id" component={DogById}/>
-                <Route path='/home/createDog'> <CreateDog></CreateDog> </Route>
+                <Route path='/createDog'> <CreateDog></CreateDog> </Route>
                     {/* <Route exact path='/main' />
                     <Route path='/main/create_dog' />
                     <Route path='/main/detail/:id' /> */}

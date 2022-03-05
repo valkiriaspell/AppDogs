@@ -3,8 +3,6 @@
 .card{
   display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
     flex-wrap: wrap;
     vertical-align: top;
     
@@ -19,8 +17,7 @@
     background-position: center;
     margin: 20px;   
     border-radius: 10%;
-    margin-bottom: -30px;
-   
+    margin-bottom: -30px;   
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.692);
     cursor: pointer;       
     
@@ -31,16 +28,17 @@
     flex-direction: column;
     justify-content: space-between;
     box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.849);  
-    margin: 10px;
-    text-align: center;
+    margin: 10px;    
+    align-items: flex-start;
     border-radius: 10px;
     width: 300px;    
     background: rgba(228, 228, 228, 0.712);
     -webkit-backdrop-filter: blur(5px);
-    backdrop-filter: blur(5px);
-    vertical-align:auto;
-    padding: 10px;
+    backdrop-filter: blur(5px);       
+    padding-top: 25px;
     padding-left: 20px;
+    padding-bottom: 10px;
+    padding-right: 10px;
     font-family: 'Josefin Sans', sans-serif;
     font-size: 20px;
     transition: all .3s ease;
@@ -88,5 +86,7 @@
   tr {
     vertical-align: top;
   }
+
+ 
 
  

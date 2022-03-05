@@ -6,6 +6,7 @@ import { getDogById, removeDog } from "../Redux/actions";
 import './dogById.css'
 import dogy from "../images/dog2.gif"
 
+
 const DogById = (props) => {    
     
         const { id } = props.match.params
@@ -48,7 +49,7 @@ const DogById = (props) => {
                     :
                     <div className="Load">
                         <h2>Loading...</h2>
-                        <img src={dogy} alt="Please Wait" />
+                        <img src={dogy} alt="Please Wait"/>                        
                         </div>
                 }
             </div>

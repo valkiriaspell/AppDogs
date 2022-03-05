@@ -13,8 +13,7 @@
     backdrop-filter: blur(5px);
     vertical-align:auto;
     padding: 10px;
-    padding-left: 20px;
-    font-family: "Patrick Hand",cursive;
+    padding-left: 20px;    
     font-size: 16px;
     transition: all .3s ease;
     color: rgb(131, 48, 1);   

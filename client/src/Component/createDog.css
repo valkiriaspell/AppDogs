@@ -1,6 +1,5 @@
 .danger {
-    color: red;
-    font-size: 10px;
+    color: red;    
   }
   
   input.danger {
@@ -8,6 +7,7 @@
   }
 
   .formDog {
+    font-size: 18px;
     align-self: center;
     align-content: center;  
     display: flex;
@@ -22,16 +22,36 @@
     padding-left: 30px;          
     
   }
+  .disabled{
+    color: rgb(0, 0, 0);
+    background-color: rgb(129, 129, 129);
+
+  }
+  .enabled{
+    color: white;
+    background-color: orangered;
+  }
+  .enabled :hover {
+    cursor: pointer;
+  }
+  .error {
+    color: rgb(250, 32, 32);
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.924);
+  }
 
   input {
     width: 350px;
-    padding: 10px 16px;
+    height: 30px;
     margin: 8px 0;
     display: inline-block;
     border: 1px solid #ccc;
     border-radius: 4px;
-    box-sizing: border-box;  
+    box-sizing: border-box;
+    font-size:20px;  
   }
   label {
       text-align: left;
   }
+
+
+  
