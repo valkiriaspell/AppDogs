@@ -9,27 +9,40 @@ import './dogs.css'
 
 const Dogs = () => {
   let [page, setPage] = useState(1);
-
+  
   const dispatch = useDispatch()
   const { dogs, name, order } = useSelector(state=> state)
+
+  const perPage = 8;  
+  // const pages = Math.ceil(dogs.length / perPage); 
 
   useEffect(()=>{
     dispatch(getAllDogs({page}))
     console.log(page, "AQUI PAGE") 
- },[dispatch])
+ },[page])
  
+// const bucle = () =>{
 
-//  const changePage = (page)=>{
-//   dispatch(getAllDogs({page,name,order}))  
+//   for (i = 1; i <= dogs.length ; i+15) {
+//     let j = 1;    
+//     // <button className="Paged_numbers" onClick={()=>setPage(j)}>1</button>;
+//     j++;
+//     console.log("AQUI INDICE", i, "AQUI YE", j)
+//   }
+// }
+//  << 1 2 3 >>
+// bucle()
+
+
     return (
     <div>   
             <ul className="pages">
-          <button className="Paged_numbers" onClick={()=>setPage(1)}>1</button>
-          <button className="Paged_numbers" onClick={()=>setPage(2)}>2</button>
-          <button className="Paged_numbers" onClick={()=>setPage(3)}>3</button>
-          <button className="Paged_numbers" onClick={()=>setPage(4)}>4</button>
-          <button className="Paged_numbers" onClick={()=>setPage(5)}>5</button>
-          <button className="Paged_numbers" onClick={()=>setPage(6)}>6</button>
+          <button className="Paged_numbers" onClick={()=>setPage(page-1)} disabled={page==1}>{"<<"}</button>
+          <button className="Paged_numbers" onClick={()=>setPage(page-1)} disabled={page==1}>{page-1} </button>
+          <button className="Paged_numbers_page" >{page}</button>
+          <button className="Paged_numbers" onClick={()=>setPage(page+1)}>{page+1}</button>
+          <button className="Paged_numbers" onClick={()=>setPage(page+1)}  >{">>"}</button>
+          {/* <button className="Paged_numbers" onClick={()=>setPage(6)}>6</button>
           <button className="Paged_numbers" onClick={()=>setPage(7)}>7</button>
           <button className="Paged_numbers" onClick={()=>setPage(8)}>8</button>
           <button className="Paged_numbers" onClick={()=>setPage(9)}>9</button>          
@@ -37,7 +50,7 @@ const Dogs = () => {
           <button className="Paged_numbers" onClick={()=>setPage(11)}>11</button>          
           <button className="Paged_numbers" onClick={()=>setPage(12)}>12</button>          
           <button className="Paged_numbers" onClick={()=>setPage(13)}>13</button>          
-          <button className="Paged_numbers" onClick={()=>setPage(14)}>14</button>        
+          <button className="Paged_numbers" onClick={()=>setPage(14)}>14</button>         */}
             </ul>
              <div className='dogsContainer'>
         {dogs?.map((dog) => (

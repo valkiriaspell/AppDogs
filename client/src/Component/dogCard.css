@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Baloo+Paaji+2:wght@400;500&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Hubballi&family=Josefin+Sans:wght@500&family=League+Gothic&display=swap');
 
 .card{
   display: flex;
@@ -41,8 +41,8 @@
     vertical-align:auto;
     padding: 10px;
     padding-left: 20px;
-    font-family: "Patrick Hand",cursive;
-    font-size: 16px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 20px;
     transition: all .3s ease;
     color: rgb(131, 48, 1);   
     min-height: 250px;
