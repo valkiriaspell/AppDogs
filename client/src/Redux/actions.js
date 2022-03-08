@@ -12,24 +12,30 @@ export const FILTER_CREATED = 'FILTER_CREATED'
 export const ORDER_BY_NAME = 'ORDER_BY_NAME'
 export const ORDER_BY_WEIGHT = 'ORDER_BY_WEIGHT'
 
-export const getAllDogs = ({page, order, name}) => async dispatch => {
+export const getAllDogs = (page, name, order) => async dispatch => {
     try{     
-        if (page && order && name) {
+        if (page && name) {
 
             const res = await axios.get(`http://localhost:3001/dogs?page=${page?page:1}&order=${order?order:""}&name=${name?name:""}`)
-            return dispatch({ type: GET_ALL_DOGS, payload: res.data })        
+            console.log("perros enviados")
+            return dispatch({ type: GET_ALL_DOGS, payload: res.data })
+                    
         }
         if (page) {
 
             const res = await axios.get(`http://localhost:3001/dogs?page=${page}`)
-            return dispatch({ type: GET_ALL_DOGS, payload: res.data })        
+            console.log("perros enviados")
+            return dispatch({ type: GET_ALL_DOGS, payload: res.data })
+                    
         }
 
         const res = await axios.get(`http://localhost:3001/dogs`)
-        return dispatch({ type: GET_ALL_DOGS, payload: res.data })    
+        console.log("perros enviados")
+        return dispatch({ type: GET_ALL_DOGS, payload: res.data })
+           
         
     }catch(e) {
-        console.log(e)
+        console.log(e)        
     }
 }
 

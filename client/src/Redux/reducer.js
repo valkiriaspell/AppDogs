@@ -5,20 +5,21 @@ const initialState = {
     dogs: [],
     allDogs: [],
     temperaments: [],
-    dog: {},
-    name: "",
+    dog: {},    
     order: "",
 }
 
 const rootReducer = (state = initialState, action) => {
     switch (action.type) {
         case GET_ALL_DOGS:
+            
             return {
                 ...state,
                 dogs: action.payload,
                 allDogs: action.payload
             };
         case GET_DOG:
+            
         return{
             ...state,
             dog: action.payload

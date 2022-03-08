@@ -67,16 +67,16 @@ console.log(dogs[4])
                     })
                     // res.json(dogs)
                 }
-                //pour la recherche par page, par 8 chiens      
-                page = page ? page : 1 
-                const charXPage = 8;
-                let result = dogs.slice((charXPage * (page -  1)) , (charXPage * (page -  1)) + charXPage )
-                //
-                result.length > 0? res.json(result) : res.status(400).json({mesagge: 'Does not exist'})
-                // return res.send({
-                //     result: result, 
-                //     count: dogs.length
-                // })
+                //pour la recherche par page, par 8 chiens
+                
+                    page = page ? page : 1 
+                    const charXPage = 8;
+                    let result = dogs.slice((charXPage * (page -  1)) , (charXPage * (page -  1)) + charXPage )
+                    return res.send({
+                            result: result, 
+                            count: dogs.length,                            
+                        })           
+               
         }catch(e){
             next(e)
         }

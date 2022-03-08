@@ -9,51 +9,67 @@ import './dogs.css'
 
 const Dogs = () => {
   let [page, setPage] = useState(1);
+  let [name, setName] = useState("");
   
   const dispatch = useDispatch()
-  const { dogs, name, order } = useSelector(state=> state)
+  const { dogs } = useSelector(state=> state)
 
-  const perPage = 8;  
-  // const pages = Math.ceil(dogs.length / perPage); 
-
+   
+  
   useEffect(()=>{
-    dispatch(getAllDogs({page}))
+    if (name !== "") {
+      dispatch(getAllDogs(page,name))  
+      console.log(dogs, "aqui perros") 
+      console.log(name, "AQUI NAME")
+    } else {
+    dispatch(getAllDogs(page))
     console.log(page, "AQUI PAGE") 
- },[page])
+  }},[page,name])
  
-// const bucle = () =>{
+ const handleOnChange = (e)=>{
+  e.preventDefault()
+  setName(e.target.value)
+  setPage(1)
+}
 
-//   for (i = 1; i <= dogs.length ; i+15) {
-//     let j = 1;    
-//     // <button className="Paged_numbers" onClick={()=>setPage(j)}>1</button>;
-//     j++;
-//     console.log("AQUI INDICE", i, "AQUI YE", j)
-//   }
-// }
-//  << 1 2 3 >>
-// bucle()
 
 
     return (
-    <div>   
-            <ul className="pages">
-          <button className="Paged_numbers" onClick={()=>setPage(page-1)} disabled={page==1}>{"<<"}</button>
-          <button className="Paged_numbers" onClick={()=>setPage(page-1)} disabled={page==1}>{page-1} </button>
+    <div className="Home">   
+      <div className="BuscadoryAdd">
+    
+      <label>Search breed </label> 
+      <input 
+        className="Buscador"     
+        type="text"
+        placeholder="Name or part of it..."
+        value={name}
+        onChange={handleOnChange}        
+      />     
+   
+    <div>Results founded: {dogs.count}</div>
+    </div>
+    {name?
+    <>
+          <ul className="pages">
+          <button className="Paged_numbers" onClick={()=>setPage(page-1)} disabled={page===1}>{"<<"}</button>
           <button className="Paged_numbers_page" >{page}</button>
-          <button className="Paged_numbers" onClick={()=>setPage(page+1)}>{page+1}</button>
-          <button className="Paged_numbers" onClick={()=>setPage(page+1)}  >{">>"}</button>
-          {/* <button className="Paged_numbers" onClick={()=>setPage(6)}>6</button>
-          <button className="Paged_numbers" onClick={()=>setPage(7)}>7</button>
-          <button className="Paged_numbers" onClick={()=>setPage(8)}>8</button>
-          <button className="Paged_numbers" onClick={()=>setPage(9)}>9</button>          
-          <button className="Paged_numbers" onClick={()=>setPage(10)}>10</button>          
-          <button className="Paged_numbers" onClick={()=>setPage(11)}>11</button>          
-          <button className="Paged_numbers" onClick={()=>setPage(12)}>12</button>          
-          <button className="Paged_numbers" onClick={()=>setPage(13)}>13</button>          
-          <button className="Paged_numbers" onClick={()=>setPage(14)}>14</button>         */}
+          <button className="Paged_numbers" onClick={()=>setPage(page+1)} disabled={page>=3} >{">>"}</button>         
             </ul>
-             <div className='dogsContainer'>
-        {dogs?.map((dog) => (
+            </> 
+            :
+            <ul className="pages">
+          <button className="Paged_numbers" onClick={()=>setPage(page-3)} disabled={page===1}>{"<<"}</button>
+          <button className="Paged_numbers" onClick={()=>setPage(page-1)} disabled={page===1}>{page-1} </button>
+          <button className="Paged_numbers_page" >{page}</button>
+          <button className="Paged_numbers" onClick={()=>setPage(page+1)} disabled={page>=21} >{page+1}</button>
+          <button className="Paged_numbers" onClick={()=>setPage(page+3)} disabled={page>=21} >{">>"}</button>         
+            </ul>
+}
+             {dogs.count? 
+             <>
+            <div className='dogsContainer'>
+        {dogs.result?.map((dog) => (
           <DogCard
             key={dog.id}            
             name={dog.name}
@@ -64,8 +80,12 @@ const Dogs = () => {
             image={dog.image}
             id= {dog.id}
           />
-        ))}
+        )) }        
              </div>
+             </>
+             :
+             <div className="msgDogs">Dogs not found</div>
+        }
       </div>
     );
   }

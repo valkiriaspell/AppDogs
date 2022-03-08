@@ -1,4 +1,17 @@
 
+  .Home {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+.BuscadoryAdd {
+  font-size: 20px;
+  text-shadow: 0.1em 0.1em 0.2em black;
+  display: flex;
+  flex-direction: column;
+}
 
 .dogsContainer {
     display: flex;
@@ -11,13 +24,13 @@
     margin-right: 10%;
   }
 
+
   .pages {
     color: white;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin-left: 43%;
-    margin-right: 43%;
+    
     background: rgba(0, 0, 0, 0.835);
     border-radius: 10px;
     padding: 0.2%;
@@ -45,6 +58,15 @@
     padding: 5px;
     font-weight: bold;
     text-decoration:wavy;
+  }
+
+  .msgDogs {
+    font-size: 28px;
+    text-shadow: 0.1em 0.1em 0.2em black;    
+    margin-top: 100px;
+    background-color: rgba(0, 0, 0, 0.664);
+    width: 300px;
+    padding: 10px;
   }
 
   ul {
