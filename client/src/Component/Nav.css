@@ -1,14 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Baloo+Paaji+2:wght@400;500&display=swap");
 
 .naviBar{
-    display: flex;
-  justify-content:center;  
-  
-  color: white;  
-  padding: 10px 20px 32px 20px;
+  position: fixed;
+  top: 0;           
+  color: white;    
   text-shadow: 0.1em 0.1em 0.2em black;
-  width: 100%;
-  vertical-align: middle;   
+  width: 100%;  
+  background-color: #fddba5e1;   
+  min-height: 105px;
+  padding-top: 20px;
   }
 
   .draw-border {
@@ -16,7 +16,8 @@
     color: rgba(255, 81, 0, 0.75);
     -webkit-transition: color 0.25s 0.0833333333s;
     transition: color 0.25s 0.0833333333s;
-    position: relative;
+    margin-top: 50px;
+    position: relative;    
   }
   
   .draw-border::before,
@@ -67,7 +68,6 @@
   
   .btn {
     background: rgba(49, 18, 0, 0.678);
-    /* background: linear-gradient(0deg, rgba(136,53,1,1) 0%, rgba(254,89,0,1) 37%, rgba(245,85,1,1) 65%, rgba(184,61,4,1) 100%); */
     border: none;
     cursor: pointer;
     line-height: 1.5;

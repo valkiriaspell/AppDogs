@@ -11,17 +11,14 @@
   
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.Home_dog {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 400px;
+  z-index: 2;  
 }
-
 .App-header {
   background-color: #282c34;
   min-height: 100vh;

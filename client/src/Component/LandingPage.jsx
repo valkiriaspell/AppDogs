@@ -1,5 +1,5 @@
 import React from "react";
-import {Link, useHistory} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import './LandingPage.css';
 import { useState } from "react";
 import PopUp from "./PopUp";

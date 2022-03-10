@@ -12,22 +12,15 @@ export const FILTER_CREATED = 'FILTER_CREATED'
 export const ORDER_BY_NAME = 'ORDER_BY_NAME'
 export const ORDER_BY_WEIGHT = 'ORDER_BY_WEIGHT'
 
-export const getAllDogs = (page, name, order) => async dispatch => {
+export const getAllDogs = (page, name, order, source,temps) => async dispatch => {
     try{     
-        if (page && name) {
+        if (name || order) {
 
-            const res = await axios.get(`http://localhost:3001/dogs?page=${page?page:1}&order=${order?order:""}&name=${name?name:""}`)
-            console.log("perros enviados")
+            const res = await axios.get(`http://localhost:3001/dogs?page=${page?page:1}&order=${order?order:""}&name=${name?name:""}&source=${source}&temps=${temps}`)
+            console.log("perros filtrados")
             return dispatch({ type: GET_ALL_DOGS, payload: res.data })
                     
-        }
-        if (page) {
-
-            const res = await axios.get(`http://localhost:3001/dogs?page=${page}`)
-            console.log("perros enviados")
-            return dispatch({ type: GET_ALL_DOGS, payload: res.data })
-                    
-        }
+        }       
 
         const res = await axios.get(`http://localhost:3001/dogs`)
         console.log("perros enviados")
@@ -39,12 +32,7 @@ export const getAllDogs = (page, name, order) => async dispatch => {
     }
 }
 
-// export const setPage = (page)=>{
-//     return{
-//         type: SET_PAGE,
-//         payload: page
-//     }
-// }
+
 export const getDogById = (id)=> async (dispatch)=>{
         try {
             const result = await axios.get(`http://localhost:3001/dog/${id}`)
@@ -67,9 +55,24 @@ export const removeDog = ()=> {
 
 export const getAllTemperaments = () => async dispatch => {
     try{
-        const res = await axios.get('/temperaments')
+        const res = await axios.get('http://localhost:3001/temperament')
+        console.log("van temps al store")
         return dispatch({ type: GET_ALL_TEMPERAMENTS, payload: res.data })
     }catch(e) {
         console.log(e)
+    }
+}
+
+export const createDog = (dog)=> {
+    return (dispatch)=>{
+        axios.post(`http://localhost:3001/dog`,dog)
+        .then(response =>{
+            return dispatch({
+                type: CREATE_DOG
+            })
+        })
+        .catch((err)=>{
+            console.log(err)
+        })
     }
 }

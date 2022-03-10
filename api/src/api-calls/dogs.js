@@ -6,7 +6,7 @@ const { v4: v4, version } = require('uuid');
 
 
 const getDogs = async (req, res, next) => {
-    let { order, page } = req.query
+    let { order, page, source } = req.query
     let {name} = req.query;
     let {temps} = req.query;
     
@@ -40,23 +40,29 @@ const getDogs = async (req, res, next) => {
             
             let dogs =  [...dbDogs, ...apiDogs];
             //ici j'ai mélangé les deux chiens d'api avec les chiens de ma db
+       
         
-        
-console.log(dogs[4])
+
            
-            
+            if (source === "Created") {
+                dogs = dogs.filter(d => !d.hasOwnProperty("source")) 
+            } 
+            if (source === "Real") {
+                dogs = dogs.filter(d => d.hasOwnProperty("source")) 
+            }
             if(name && name !== "") {
                     
                     dogs = dogs.filter(d => d.name.toLowerCase().includes(name.toLowerCase()))                
                 // dogs.length > 0? res.json(dogs) : res.status(400).json({mesagge: 'Not Found'})
                           }
-            if(temps) {
-                                           
-                        dogs = dogs.filter(d =>d.temperament?d.temperament.toLowerCase().includes(temps.toLowerCase()):false)   
+                          console.log(dogs, "perros after filtros")
+            if(temps !== "All") {
+            console.log(temps)                               
+                        dogs = dogs.filter(d =>d.temperament?d.temperament.includes(temps):false)   
                         
                         // dogs.length > 0? res.json(dogs) : res.status(400).json({mesagge: 'Not Found'})
                 }
-            else if(order === "asc" || !order || order === ""){
+            if(order === "asc" || !order || order === ""){
                     dogs = dogs.sort((a,b) =>{
                         return a.name.toLowerCase().localeCompare(b.name.toLowerCase())
                     })

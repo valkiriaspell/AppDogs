@@ -4,7 +4,8 @@ module.exports = (sequelize) => {
   
   sequelize.define('temperaments', {    
     name: {
-      type: DataTypes.STRING,      
+      type: DataTypes.STRING,
+      primaryKey: true,
     }
   },{
       timestamps: false       

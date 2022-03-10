@@ -4,15 +4,43 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    margin-top: 120px;
   }
 
 .BuscadoryAdd {
+  margin-top: 20px;
   font-size: 20px;
   text-shadow: 0.1em 0.1em 0.2em black;
   display: flex;
   flex-direction: column;
 }
 
+select {
+  border: none; 
+  font-family: 'Roboto Slab', sans-serif;
+  font-size: 12px;
+  background-color: rgba(175, 52, 4, 0.972);
+  color: white;
+  border-radius: 0.5rem;     
+  padding: 6px;
+  text-align: center;
+  margin-top: 5px;
+}
+.Filters{
+  margin-top: 16px;
+  font-size: 18px;
+  display: flex;
+  flex-direction: row;
+  color: rgb(180, 49, 2);
+  background-color: rgba(255, 255, 255, 0.897);
+  border-radius: 0.5rem;
+  border: none;   
+  width: 450px;
+  padding: 7px;
+  justify-content: space-around;
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.637);
+  margin-bottom: 20px;
+}
 .dogsContainer {
     display: flex;
     flex-wrap: wrap;

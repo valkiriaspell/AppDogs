@@ -19,8 +19,22 @@
     justify-content: space-between;    
     padding: 15px;
     color: rgb(255, 255, 255);            
-    padding-left: 30px;          
+    padding-left: 30px;    
+    margin-top: 125px;      
     
+  }
+  .selectionPart{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 5px;
+    margin-top: 15px;    
+  }
+  .tempChoosed{
+    color: white;
+    background-color: orangered;
+    padding: 5px;
+    margin:auto;
   }
   .disabled{
     color: rgb(0, 0, 0);

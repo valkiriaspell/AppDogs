@@ -1,7 +1,6 @@
 import React from "react";
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useHistory } from 'react-router'
 import { getDogById, removeDog } from "../Redux/actions";
 import './dogById.css'
 import dogy from "../images/dog2.gif"
@@ -12,7 +11,7 @@ const DogById = (props) => {
         const { id } = props.match.params
         const { dog } = useSelector(state => state)
         const dispatch = useDispatch()
-        const history = useHistory()
+        
     
         useEffect(()=>{
             dispatch(getDogById(id))
@@ -20,12 +19,8 @@ const DogById = (props) => {
             return()=>{
                 dispatch(removeDog())
             }
-        },[dispatch,id])
-    
-    const goToBack = ()=>{
-        history.goBack()
-    }
-    console.log(dog)
+        },[dispatch,id])   
+   
     
         return (
             <div className="dogDetail">
@@ -33,7 +28,7 @@ const DogById = (props) => {
                     
                     dog?.name? 
                     <>
-                        <div className="imgDetail"><img width="400px" height="250px" src={dog.image} alt= "No Image"/></div>
+                        <div className="imgDetail"><img width="400px" height="250px" src={dog.image} alt= "Dog"/></div>
                         <div className="detail">
                             <h3>{dog.name}</h3>
                             <p>Life span promedium: {dog.life_span}</p>
@@ -43,7 +38,7 @@ const DogById = (props) => {
                            <p>Max weight: {dog.weight.slice(-2)} kgs.</p>
                            <p>Temperaments: {dog.temperament}</p>                             
                              
-                        {/* <button onClick={goToBack}>GO BACK</button> */}
+                        
                         </div>
                     </>
                     :

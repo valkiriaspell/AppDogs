@@ -1,66 +1,106 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import './createDog.css'
 
 export default function CreateDog() {
-  const [name, setName] = useState('');
-  const [height, setHeight] = useState('');
-  const [heightMax, setHeightMax] = useState('');
-  const [weight, setWeight] = useState('');
-  const [weightMax, setWeightMax] = useState('');
   const [image, setImage] = useState('');
-  const [lifeSpan, setLifespan] = useState('');
-  const [temps, setTemps] = useState('');
   const [error, setError] = useState('');
   const [msg, setMSG] = useState('');
+  const [form,setForm] = useState({
+    name:"", 
+    height:0,
+    heightMax:0, 
+    weight:0, 
+    weightMax:0, 
+    lifeSpan:0,     
+  })
+  const [temps, setTemps] = useState([]);
+  
+  
+  const {temperaments} = useSelector(state => state)
+  
   
 
-  function validateUser(value) {
-    if(/\p{Sc}|\p{P}/.test(value)) {
+  function tempsDogs (e) {    
+    setTemps([...temps,e.target.value])    
+    console.log(temps, "AQUI TEMPS"  )        
+  }
+
+  function removeTemp (e) {    
+    var finded = temps.findIndex(t => t === e.target.name)  
+    setTemps(temps.filter((t,index)=> index !== finded))    
+         
+  }
+
+  
+    
+  function validation(e) {
+    if(/\p{Sc}|\p{P}/.test(e.target.value)) {
       setError('Numbers and symbols not allowed');
     } else {
-      setError('');
+      setError('Nose');
     }
-    setName(value);
+    setForm({
+      ...form,
+      [e.target.name]: e.target.value,
+    });
     setMSG("You have created a New Breed")
   }
 
   const onSubmit = (e)=>{
     e.preventDefault()
-   console.log({name,weight,height,lifeSpan,temps})
-    
+   console.log("nada")      
 }
+
+
+
+
   return (
       <div className='formDog'>
       <form onSubmit={onSubmit}>
         <label>Name</label>
           <div>
-        <input className={error && 'danger'} name="name" value={name} placeholder="Name the breed" onChange={(e) => validateUser(e.target.value)}/>
+        <input className={error && 'danger'} name="name" value={form.name} placeholder="Name the breed" onChange={(e) => validation(e)}/>
         {!error ? null : <p className='error'><strong>{error}</strong></p>}
         </div>
-          <label>Weigth Min</label>
+          <label>Weigth Min</label><label>Weigth Max</label>
         <div>
-        <input name="wmin" value={weight}   onChange={(e) => setWeight(e.target.value)}/>
-        </div>
-        <label>Weigth Max</label>
-        <div> 
-        <input name="wmax" value={weightMax}   onChange={(e) => setWeightMax(e.target.value)}/>
+        <input name="weight" value={form.weight}   onChange={(e) => validation(e)}/>       
+        <input name="weightMax" value={form.weightMax}   onChange={(e) => validation(e)}/>
         </div>
         <label>Height Min</label>
         <div>
-        <input name="hmin" value={height}  onChange={(e) => setHeight(e.target.value)}/>
+        <input name="height" value={form.height}  onChange={(e) => validation(e)}/>
         </div>
          <label>Height Max</label>
         <div>
-        <input name="hmax" value={heightMax}  onChange={(e) => setHeightMax(e.target.value)}/>
+        <input name="heightMax" value={form.heightMax}  onChange={(e) => validation(e)}/>
         </div>
         <label>Life span</label>
         <div>
-        <input name="lifespan" value={lifeSpan}   onChange={(e) => setLifespan(e.target.value)}/>
+        <input name="lifespan" value={form.lifeSpan}   onChange={(e) => validation(e)}/>
         </div>
         <label>Temperaments</label>
-        <div>
-        <input name="temps" value={temps}   onChange={(e) => setTemps(e.target.value)}/>
-        </div>
+        <div>                 
+          <select onChange={tempsDogs} placeholder="created" name="" id="">
+              {
+                temperaments.length > 0 &&
+                temperaments.map((e,index) =>(
+                    <option   key={index} value={e.name}> {e.name} </option>
+                         )
+                     )           
+              }                     
+                    </select>                    
+                </div>
+                <div className='selectionPart'>
+                Selected:<br></br>
+                  {temps?temps.map((t,index)=> (
+                    <button className="tempChoosed"key={index} name={t} onClick={(e) => removeTemp(e)}>{t} X</button>
+                  )):"nothing yet"}<br></br>
+
+
+                </div>
+                
         
         
         <input  disabled={error} className={error?"disabled":"enabled"} type="submit" />
