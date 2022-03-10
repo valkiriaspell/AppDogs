@@ -11,30 +11,68 @@
     align-self: center;
     align-content: center;  
     display: flex;
-    align-items: center;
+    padding-top: 50px;
+    text-align: left;
     flex-direction: column;    
-    background: rgba(0, 0, 0, 0.692);
+    background: rgba(0, 0, 0, 0.76);
     width: 500px;
     margin: auto;
-    justify-content: space-between;    
-    padding: 15px;
+    justify-content: space-between;        
     color: rgb(255, 255, 255);            
     padding-left: 30px;    
     margin-top: 125px;      
     
   }
-  .selectionPart{
+  .lifespan{
+    border-bottom: solid;
+    border-width: 1px;
+    margin-bottom: 10px;
+    border-color: white;  
+  } 
+  .formName{
+    border-bottom: solid;
+    border-width: 1px;
+    margin-bottom: 10px;
+    border-color: white;  
+  } 
+  .formNumbers{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    margin: 5px;
+    justify-content: left; 
+    margin-top: 10px; 
+    border-bottom: solid;
+    border-width: 1px;
+    margin-bottom: 10px;
+    border-color: white;  
+  }
+  .miniInput{
+    width: 20%;
+    margin-left: 14px;
+    margin-right: 14px;    
+  }
+  .formDog select {
+    border: none; 
+    font-family: 'Roboto Slab', sans-serif;
+    font-size: 18px;
+    background-color: rgb(134, 69, 12);
+    color: white;
+    border-radius: 0.5rem;     
+    padding: 6px;
+    text-align: center;
+    margin-top: 5px;
+  }
+  .selectionPart{
+    display: flex;
+    flex-wrap: wrap;              
     margin-top: 15px;    
   }
   .tempChoosed{
-    color: white;
-    background-color: orangered;
+    color: rgb(255, 255, 255);
+    background-color: rgba(236, 114, 0, 0.829);
     padding: 5px;
-    margin:auto;
+    margin:3px;
+    border-radius: 0.5em;
+    border: none;
   }
   .disabled{
     color: rgb(0, 0, 0);
@@ -43,28 +81,33 @@
   }
   .enabled{
     color: white;
-    background-color: orangered;
+    background-color: rgb(228, 123, 4);
+    width: 50%;
+    cursor: pointer;    
   }
-  .enabled :hover {
-    cursor: pointer;
-  }
+  
   .error {
     color: rgb(250, 32, 32);
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.924);
   }
 
   input {
-    width: 350px;
+    width: 90%;
     height: 30px;
-    margin: 8px 0;
+    margin-top: 8px;
+    margin-bottom: 8px;
     display: inline-block;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
-    font-size:20px;  
+    font-size:20px;      
   }
   label {
       text-align: left;
+  }
+  .submit{
+    display: flex;
+    justify-content: center;
   }
 
 

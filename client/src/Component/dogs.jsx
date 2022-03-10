@@ -62,7 +62,7 @@ const Dogs = () => {
         onChange={handleName}        
       />     
    
-    <div>Results found: {dogs.count}</div>
+    
     </div>
 <div className="Filters">
   <label><strong>Filter by</strong>  </label>
@@ -105,6 +105,7 @@ const Dogs = () => {
                     </select>
                   </div> 
 </div>
+<div className="results">Results found: {dogs.count}</div>
 {name?
 <>
       <ul className="pages">

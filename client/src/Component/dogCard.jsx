@@ -13,7 +13,7 @@ export class DogCard extends Component {
                 <Link to={`/home/${this.props.id}`}><div className='imgDog' style={divStyle}> </div></Link>
                 
                 <div className="dogCard">
-            <table>
+            <table id="dog">
             <thead>
             <tr>
             <th colSpan="3"><strong>{this.props.name}</strong></th>

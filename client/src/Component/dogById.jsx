@@ -21,14 +21,15 @@ const DogById = (props) => {
             }
         },[dispatch,id])   
    
-    
+        var divStyle = {  backgroundImage: 'url(' + dog.image + ')'}
+
         return (
             <div className="dogDetail">
                 {
                     
                     dog?.name? 
                     <>
-                        <div className="imgDetail"><img width="400px" height="250px" src={dog.image} alt= "Dog"/></div>
+                        <div className="imgDetail" style={divStyle}></div>
                         <div className="detail">
                             <h3>{dog.name}</h3>
                             <p>Life span promedium: {dog.life_span}</p>
