@@ -3,7 +3,7 @@ import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getDogById, removeDog } from "../Redux/actions";
 import './dogById.css'
-import dogy from "../images/dog2.gif"
+import dogy from "../images/dog14.gif"
 
 
 const DogById = (props) => {    
@@ -45,7 +45,7 @@ const DogById = (props) => {
                     :
                     <div className="Load">
                         <h2>Loading...</h2>
-                        <img src={dogy} alt="Please Wait"/>                        
+                        <img src={dogy} height="250px" alt="Please Wait"/>                        
                         </div>
                 }
             </div>

@@ -3,21 +3,20 @@
 .naviBar{
   position: fixed;
   top: 0;           
-  color: white;    
-  text-shadow: 0.1em 0.1em 0.2em black;
+  color: white;  
   width: 100%;  
   background-color: #fddba5e1;   
-  min-height: 105px;
-  padding-top: 20px;
+  min-height: 75px;
+  padding-top: 42px;
   }
-
   .draw-border {
     box-shadow: inset 0 0 0 3px #ffffffb7;
     color: rgba(255, 81, 0, 0.75);
     -webkit-transition: color 0.25s 0.0833333333s;
     transition: color 0.25s 0.0833333333s;
     margin-top: 50px;
-    position: relative;    
+    position: relative;
+    text-decoration: none;    
   }
   
   .draw-border::before,
@@ -82,7 +81,27 @@
   .btn:focus {
     outline: 2px dotted #080300;    
   }
-
+  
   .btn:hover {
     background-color: #fffcfad0;
+  }
+  .linkSelected {
+    color: #f87801;
+    background-color: #fffcfad0;
+    border-color: #fba562;
+    text-shadow: none;
+    border-style: solid;
+    box-shadow: inset 0 0 0 3px #ffffffb7;    
+    -webkit-transition: color 0.25s 0.0833333333s;
+    transition: color 0.25s 0.0833333333s;
+    margin-top: 50px;
+    position: relative;
+    text-decoration: none;        
+    cursor: pointer;
+    line-height: 1.5;
+    font: 'Roboto Slab', sans-serif;    
+    padding: 0.55em 2em;
+    letter-spacing: 0.05rem;
+    margin: 1em;
+    width: 13rem; 
   }

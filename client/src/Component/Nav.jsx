@@ -1,13 +1,13 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import {useHistory} from 'react-router-dom'
+import {NavLink} from 'react-router-dom'
 import { getAllTemperaments } from "../Redux/actions.js";
 import './Nav.css';
 // import SearchBar from './SearchBar';
 
 
 const Nav = () => {
-const history = useHistory();
+
 const dispatch = useDispatch();
 
 useEffect(()=>{    
@@ -17,13 +17,13 @@ useEffect(()=>{
     return(
         
             <div className="naviBar">                       
-                            
-            <button  className="btn draw-border" onClick={() => history.push('/home')}>Home</button>
+             
+            <NavLink exact to="/home" activeClassName="linkSelected" className="btn draw-border"> Home </NavLink>
                
-            <button  className="btn draw-border" onClick={() => history.push('/createDog')}>Add New Breed</button>
+            <NavLink exact to='/createDog' activeClassName="linkSelected" className="btn draw-border"> Add New Breed </NavLink>
                 
-            <button  className="btn draw-border" onClick={() => history.push('/home/contact')}>Contact</button>
-          
+            <NavLink exact to="/home/contact" activeClassName="linkSelected" className="btn draw-border"> Contact </NavLink>
+                        
             </div>
       
     );
