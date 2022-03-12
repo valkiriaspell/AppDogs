@@ -72,8 +72,7 @@
     color: white;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    
+    justify-content: space-between;    
     background: rgba(0, 0, 0, 0.835);
     border-radius: 10px;
     padding: 0.2%;
@@ -82,7 +81,7 @@
   .Paged_numbers {
     color: rgb(255, 255, 255);
     background-color: transparent;    
-    font-size: 18px;
+    font-size: 16px;
     cursor: pointer;
     border: none;    
     padding: 5px;
@@ -96,7 +95,7 @@
   .Paged_numbers_page {
     color: orangered;
     background-color: transparent;    
-    font-size: 16px;  
+    font-size: 18px;  
     border: none;    
     padding: 5px;
     font-weight: bold;

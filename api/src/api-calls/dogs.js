@@ -6,7 +6,7 @@ const { v4: v4, version } = require('uuid');
 
 
 const getDogs = async (req, res, next) => {
-    let { order, page, source } = req.query
+    let { order, source } = req.query
     let {name} = req.query;
     let {temps} = req.query;
     
@@ -55,7 +55,7 @@ const getDogs = async (req, res, next) => {
                     dogs = dogs.filter(d => d.name.toLowerCase().includes(name.toLowerCase()))                
                 // dogs.length > 0? res.json(dogs) : res.status(400).json({mesagge: 'Not Found'})
                           }
-                          console.log(dogs, "perros after filtros")
+                          
             if(temps !== "All") {
             console.log(temps)                               
                         dogs = dogs.filter(d =>d.temperament?d.temperament.includes(temps):false)   
@@ -74,17 +74,11 @@ const getDogs = async (req, res, next) => {
                     // res.json(dogs)
                 }
                 //pour la recherche par page, par 8 chiens
-                
-                    page = page ? page : 1 
-                    const charXPage = 8;
-                    let result = dogs.slice((charXPage * (page -  1)) , (charXPage * (page -  1)) + charXPage )
-                    return res.send({
-                            result: result, 
-                            count: dogs.length,                            
-                        })           
+                return res.send(dogs)                    
                
         }catch(e){
             next(e)
+            console.log("No llega a la API o a DB")
         }
         
     }                 

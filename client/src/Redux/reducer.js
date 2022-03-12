@@ -1,42 +1,43 @@
-import{GET_ALL_DOGS, GET_DOG,  GET_ALL_TEMPERAMENTS, REMOVE_DOG} from './actions.js'
+import { GET_ALL_DOGS, GET_DOG, GET_ALL_TEMPERAMENTS, REMOVE_DOG, ORDER_BY_WEIGHT } from './actions.js'
 
 
 const initialState = {
-    dogs: [],    
+    dogs: [],
     temperaments: [],
-    dog: {},        
+    dog: {},
 }
 
 const rootReducer = (state = initialState, action) => {
     switch (action.type) {
         case GET_ALL_DOGS:
-            
+
             return {
                 ...state,
-                dogs: action.payload,                
+                dogs: action.payload,
             };
         case GET_DOG:
-            
-        return{
-            ...state,
-            dog: action.payload
-        }
-        case REMOVE_DOG:
-            return{
+
+            return {
                 ...state,
                 dog: action.payload
             }
-     
-            
-                case GET_ALL_TEMPERAMENTS:
-                    return {
-                        ...state,
-                        temperaments: action.payload,
-                        
-                    };            
+        case REMOVE_DOG:
+            return {
+                ...state,
+                dog: action.payload
+            }
 
-            default:
-                return state
+
+        case GET_ALL_TEMPERAMENTS:
+            return {
+                ...state,
+                temperaments: action.payload,
+
+            };
+       
+
+        default:
+            return state
     }
 };
 
