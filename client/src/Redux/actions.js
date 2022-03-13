@@ -4,10 +4,15 @@ export const GET_DOG = 'GET_DOG'
 export const GET_ALL_TEMPERAMENTS = 'GET_ALL_TEMPERAMENTS'
 export const REMOVE_DOG = 'REMOVE_DOG'
 export const CREATE_DOG = 'CREATE_DOG'
+export const SORT_DOGS = 'CREATE_DOG'
 export const GET_DOG_BY_NAME = 'GET_DOG_BY_NAME'
 export const ORDER_BY_WEIGHT = 'ORDER_BY_WEIGHT'
 
 
+export const sortDogs = (order) => { 
+    console.log(order, "aqui llega order a la action")
+    return ({type: SORT_DOGS, payload: order})
+}
 
 export const getAllDogs = (name, order, source,temps) => async dispatch => {
     try{           
@@ -44,9 +49,12 @@ export const removeDog = ()=> {
 
 export const getAllTemperaments = () => async dispatch => {
     try{
-        const res = await axios.get('http://localhost:3001/temperament')
+        let res = await axios.get('http://localhost:3001/temperament')
+        res = res.data.sort((a,b) =>{
+            return a.name.toLowerCase().localeCompare(b.name.toLowerCase())
+        })
         console.log("van temps al store")
-        return dispatch({ type: GET_ALL_TEMPERAMENTS, payload: res.data })
+            return dispatch({ type: GET_ALL_TEMPERAMENTS, payload: res })
     }catch(e) {
         console.log(e)
     }
@@ -66,6 +74,7 @@ export const createDog = (dog)=> {
     }
 }
 
- 
+
+
 
 

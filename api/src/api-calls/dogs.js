@@ -16,8 +16,8 @@ const getDogs = async (req, res, next) => {
             return {
                 id: dog.id,
                 name: dog.name,
-                weight: dog.weight.metric,
-                height: dog.height.metric,
+                weight: dog.weight.metric.includes("NaN")?dog.weight.metric.replace("NaN", "0"):dog.weight.metric  ,
+                height: dog.height.metric.includes("NaN")?dog.height.metric.replace("NaN", "0"):dog.height.metric ,
                 source: "API",
                 temperament: dog.temperament,
                 life_span: dog.life_span,

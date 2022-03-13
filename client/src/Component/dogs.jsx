@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
-import { getAllDogs } from "../Redux/actions.js";
+import { getAllDogs, sortDogs } from "../Redux/actions.js";
 import DogCard from "./dogCard.jsx";
 import { useState } from "react";
 import { FiArrowLeft } from "react-icons/fi";
@@ -15,47 +15,57 @@ const Dogs = () => {
   let [order, setOrder] = useState("asc");
   let [source, setSource] = useState("All");
   let [temps, setTemps] = useState("All");
-  let [heavy, setHeavy] = useState("null")
-
-  const dispatch = useDispatch()
-
+  
   let { dogs, temperaments } = useSelector(state => state)
-
+  
+  const dispatch = useDispatch()
+  
+  useEffect(() => {
+    dispatch(getAllDogs(name, order, source, temps))
+  }, [name, order, source, temps])
+    
+  
+  let [heavy, setHeavy] = useState("null")  
+  
 
   useEffect(() => {
-    dispatch(getAllDogs(name, order, source, temps, heavy))
-  }, [name, order, source, temps, heavy])
-
-
+    setPage(1)  
+  }, [heavy])
+  
   const sourceDogs = (e) => {
     setSource(e.target.value)
+    setPage(1)
   }
 
   const orderDogs = (e) => {
     setOrder(e.target.value)
+    setPage(1)
   }
 
   const tempsDogs = (e) => {
     setTemps(e.target.value)
-  }
-  //HACIENDO ESSTE
-  const dogsByWeigth = (e) => {
-    setHeavy(e.target.value)
+    setPage(1)
+  } 
+
+ const dogsByWeight = (value) => {    
+    setHeavy(value)
+    dispatch(sortDogs(value))
+    console.log(dogs, "perros after peso")    
   }
 
-  const orderWeight = () => {
-    if (heavy === "heavy") {
 
-      let promedios = dogs.map(d => d.weight !== 0 ? parseInt(d.weight.split(' - ')[0]) + parseInt(d.weight.split(' - ')[1]) : null)
-      console.log(promedios, "perros promediados")
-      //
-      let arr = promedios
-    } else if (heavy === "least") {
-      console.log(heavy, "selected")
-    } else {
+page = page ? page : 1
+const dogsXPage = 8;
+const counter = dogs.length
+let result = dogs.slice((dogsXPage * (page - 1)), (dogsXPage * (page - 1)) + dogsXPage)
+dogs = {
+  result: result,
+  count: counter,
+}
 
-    }
-  }
+let totalPages = Math.ceil(dogs.count / 8)
+
+  
 
   const handleName = (e) => {
     e.preventDefault()
@@ -63,15 +73,6 @@ const Dogs = () => {
     setPage(1)
   }
 
-  page = page ? page : 1
-  const dogsXPage = 8;
-  let result = dogs.slice((dogsXPage * (page - 1)), (dogsXPage * (page - 1)) + dogsXPage)
-  dogs = {
-    result: result,
-    count: dogs.length,
-  }
-
-let totalPages= Math.ceil(dogs.count/8)
 
 
   return (
@@ -112,7 +113,8 @@ let totalPages= Math.ceil(dogs.count/8)
           </div>
           <div>
             <label>Weight </label> <br></br>
-            <select onChange={dogsByWeigth} name="" id="">
+            <select onChange={(e) => dogsByWeight(e.target.value)} name="" id="">
+              <option value="null"> - </option>
               <option value="least"> Least heavy </option>
               <option value="heavy"> Heaviest </option>
             </select>
@@ -133,31 +135,31 @@ let totalPages= Math.ceil(dogs.count/8)
           <label><strong>Results found: {dogs.count}</strong></label>
         </div>
       </div>
-        {dogs.count?
-      <div>
-              {page === 1 && totalPages===1? 
-                <>
+      {dogs.count ?
+        <div>
+          {page === 1 && totalPages === 1 ?
+            <>
+              <ul className="pages">
+                <button className="Paged_numbers_page" >{page}</button>
+              </ul>
+            </>
+            :
             <ul className="pages">
-              <button className="Paged_numbers_page" >{page}</button>                                          
+              <button className="Paged_numbers" onClick={() => setPage(1)} disabled={page === 1}>{" << "}</button>
+              <button className="Paged_numbers" onClick={() => setPage(page - 1)} disabled={page === 1}><i><FiArrowLeft /></i></button>
+              <button className="Paged_numbers" onClick={() => setPage(page - 1)} disabled={page === 1}>{page === 1 ? " " : page - 1} </button>
+              <button className="Paged_numbers_page" >{page}</button>
+              <button className="Paged_numbers" onClick={() => setPage(page + 1)} disabled={page === totalPages} >{page === totalPages ? " " : page + 1}</button>
+              <button className="Paged_numbers" onClick={() => setPage(page + 1)} disabled={page === totalPages} ><i><FiArrowRight /></i></button>
+              <button className="Paged_numbers" onClick={() => setPage(totalPages)} disabled={page === totalPages} >{" >> "}</button>
             </ul>
-          </>            
-          :          
+          }
+        </div>
+        : <div>
           <ul className="pages">
-          <button className="Paged_numbers" onClick={() => setPage(1)} disabled={page === 1}>{" << First "}</button>
-          <button className="Paged_numbers" onClick={() => setPage(page - 1)} disabled={page === 1}><i><FiArrowLeft /></i></button>
-          <button className="Paged_numbers" onClick={() => setPage(page - 1)} disabled={page === 1}>{page===1? " ": page-1} </button>
-          <button className="Paged_numbers_page" >{page}</button>
-          <button className="Paged_numbers" onClick={() => setPage(page + 1)} disabled={page === totalPages} >{page===totalPages?" ": page+1}</button>
-          <button className="Paged_numbers" onClick={() => setPage(page + 1)} disabled={page === totalPages} ><i><FiArrowRight /></i></button>
-          <button className="Paged_numbers" onClick={() => setPage(totalPages)} disabled={page === totalPages} >{" Last >> "}</button>
+            <button className="Paged_numbers_page" >{" "}</button>
           </ul>
-        }
-      </div>
-      : <div>
-        <ul className="pages">
-        <button className="Paged_numbers_page" >{" "}</button>  
-          </ul>
-          </div>}
+        </div>}
       <>
       </>
       {dogs.count ?
