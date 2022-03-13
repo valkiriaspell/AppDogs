@@ -4,8 +4,17 @@ import { createDog } from '../Redux/actions';
 import './createDog.css'
 
 export default function CreateDog() {
-  const [image, setImage] = useState('');
-  const [error, setError] = useState('');
+  //////////  ---->    Local states errors   <------ //////////////
+  const [errorName, setErrorName] = useState("")
+  const [errorWmin, setErrorWmin] = useState("")
+  const [errorWmax, setErrorWmax] = useState("")
+  const [errorHmin, setErrorHmin] = useState("")
+  const [errorHmax, setErrorHmax] = useState("")
+  const [errorLifeSpan, setErrorLifeSpan] = useState("")
+  const [errorImage, setErrorImage] = useState("")
+  const [errorTemps, setErrorTemps] = useState("")
+
+   //////////  ---->    Local states data   <------ //////////////
   const [msg, setMSG] = useState('');
   const [form, setForm] = useState({
     name: "",
@@ -18,7 +27,7 @@ export default function CreateDog() {
   })
   const [temps, setTemps] = useState([]);
 
-
+  //////////  ---->    Store states    <------ //////////////
   const { temperaments } = useSelector(state => state)
   const dispatch = useDispatch()
 
@@ -37,18 +46,50 @@ export default function CreateDog() {
 
   }
 
-
+  //////////////// ---->    VALIDATIONS    <------ /////////////
 
   function validation(e) {
+    console.log(e.target.name)
+    switch (true) {
+      case e.target.name === "name":
+        if (!/^[a-zA-Z ]*$/.test(e.target.value)) {
+          setErrorName("Only A-Z letters allowed")
+          
+        } else {
+          setErrorName("")
+          setForm({
+            ...form,
+            [e.target.name]: e.target.value,
+          });
+          console.log(form, "aqui form")
+        }
+        case e.target.name === "weight":
+        if (!/^-?\d+\.?\d*$/.test(e.target.value)) {
+          setErrorWmin("Only NUMBERS allowed")
+          
+        } else {
+          setErrorWmin("")     
+          setForm({
+            ...form,
+            [e.target.name]: e.target.value,
+          });
+        }
+        case e.target.name === "weightMax":
+          if (!/^-?\d+\.?\d*$/.test(e.target.value)) {
+            setErrorWmax("Only NUMBERS allowed")
+            
+          } else {
+            setErrorWmax("")     
+            setForm({
+              ...form,
+              [e.target.name]: e.target.value,
+            });
+          }    
+    }
 
-    setForm({
-      ...form,
-      [e.target.name]: e.target.value,
-    });
-    setMSG("You have created a New Breed")
-    console.log(form, "aqui form")
   }
 
+  //////////  ---->    on Submit   <------ //////////////
   const onSubmit = (e) => {
     e.preventDefault()
     dispatch(createDog({
@@ -59,27 +100,29 @@ export default function CreateDog() {
       image: form.image,
       temperament: temps
     }))
-    console.log("se mando")
+    console.log("new dog created");
+    setMSG("You have created a New Breed")
   }
 
 
-
+  //////////  ---->    Render    <------ //////////////
 
   return (
     <div className='formDog'>
       <form onSubmit={onSubmit}>
         <div className='formName'>
           <label>Name:</label>
-          <input className={error && 'danger'} name="name" value={form.name} placeholder="Name the breed" onChange={(e) => validation(e)} />
-          {!error ? null : <p className='error'><strong>{error}</strong></p>}
+          <input className={errorName !== "" ? 'danger' : "lifeSpan"} name="name" value={form.name} placeholder="Name the breed" onChange={(e) => validation(e)} />
+          {!errorName ? null : <p className='error'>{errorName}</p>}
         </div>
         <label>Weight:</label>
         <div className='formNumbers'>
           <label>Min</label>
-          <input className='miniInput' name="weight" value={form.weight} onChange={(e) => validation(e)} />
+          <input className={errorWmin !== "" || errorWmax !== "" ? 'miniInput danger' : "miniInput"} name="weight" value={form.weight} onChange={(e) => validation(e)} />
           <label>Max</label>
           <input className='miniInput' name="weightMax" value={form.weightMax} onChange={(e) => validation(e)} />
         </div>
+        {!errorWmin ? null : <p className='error'>{errorWmin}</p>}
         <label>Height:  </label>
         <div className='formNumbers'>
           <label>Min</label>
@@ -93,7 +136,7 @@ export default function CreateDog() {
         </div>
         <div className='formImage'>
           <label>Image:</label>
-          <input name="image" value={form.image} onChange={(e) => validation(e)} />
+          <input name="image" placeholder='Insert URL as source of an image' value={form.image} onChange={(e) => validation(e)} />
         </div>
         <label>Temperaments</label>
         <div>
@@ -115,7 +158,10 @@ export default function CreateDog() {
         </div>
 
         <div className='submit'>
-          <input disabled={error} className={error ? "disabled" : "enabled"} type="submit" />
+          <input disabled={errorName} className={errorName ? "disabled" : "enabled"} type="submit" />
+        </div>
+        <div>
+          {msg ? <p>{msg}</p> : null}
         </div>
       </form>
     </div>

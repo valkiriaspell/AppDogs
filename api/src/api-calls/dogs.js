@@ -53,14 +53,14 @@ const getDogs = async (req, res, next) => {
             if(name && name !== "") {
                     
                     dogs = dogs.filter(d => d.name.toLowerCase().includes(name.toLowerCase()))                
-                // dogs.length > 0? res.json(dogs) : res.status(400).json({mesagge: 'Not Found'})
+                
                           }
                           
             if(temps !== "All") {
             console.log(temps)                               
                         dogs = dogs.filter(d =>d.temperament?d.temperament.includes(temps):false)   
                         
-                        // dogs.length > 0? res.json(dogs) : res.status(400).json({mesagge: 'Not Found'})
+                        
                 }
             if(order === "asc" || !order || order === ""){
                     dogs = dogs.sort((a,b) =>{
