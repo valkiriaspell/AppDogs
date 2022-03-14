@@ -10,7 +10,7 @@ export const ORDER_BY_WEIGHT = 'ORDER_BY_WEIGHT'
 
 
 export const sortDogs = (order) => { 
-    console.log(order, "aqui llega order a la action")
+    console.log(order, "aqui llega order a la action")    
     return ({type: SORT_DOGS, payload: order})
 }
 
@@ -61,13 +61,8 @@ export const getAllTemperaments = () => async dispatch => {
 }
 
 export const createDog = (dog)=> {
-    return (dispatch)=>{
-        axios.post(`http://localhost:3001/dog`,dog)
-        .then(response =>{
-            return dispatch({
-                type: CREATE_DOG
-            })
-        })
+    return ()=>{
+        axios.post(`http://localhost:3001/dog`,dog)      
         .catch((err)=>{
             console.log(err)
         })

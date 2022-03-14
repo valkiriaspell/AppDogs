@@ -4,7 +4,7 @@ const { Dogs, Temperaments } = require('../db.js')
 const { v4: v4, version } = require('uuid');
 
 
-
+//////////  ---->    getDOGS   <------ //////////////
 const getDogs = async (req, res, next) => {
     let { order, source } = req.query
     let {name} = req.query;
@@ -82,7 +82,8 @@ const getDogs = async (req, res, next) => {
         }
         
     }                 
-       
+
+    ////////////////  ---->    createDOG   <------ /////////////////
  
  const createDog = async function (req, res, next) {
     const {name, height, weight, image, life_span, temperament} = req.body
@@ -103,6 +104,8 @@ const getDogs = async (req, res, next) => {
         next(e)
     }
 }
+
+////////////////  ---->    getDogById   <------ /////////////////
 
  const getDogById = async (req, res, next) => {
      const {id} = req.params

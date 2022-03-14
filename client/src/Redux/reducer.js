@@ -36,6 +36,7 @@ const rootReducer = (state = initialState, action) => {
 
             };  
         case SORT_DOGS:
+            
             let orderDogs = []
             if (action.payload === "least"){
                 orderDogs = state.dogs.sort(function(a, b){
@@ -43,6 +44,10 @@ const rootReducer = (state = initialState, action) => {
                     if(Number(b.weight.split('-')[0]) < (Number(a.weight.split('-')[0] ))) return 1;
                     return 0
                 })
+                return {
+                    ...state,
+                    dogs: orderDogs
+                }  
             }
             if (action.payload === "heavy"){   
                 orderDogs = state.dogs.sort(function(a, b){
@@ -50,13 +55,11 @@ const rootReducer = (state = initialState, action) => {
                   if(Number(b.weight.split('-')[0]) > (Number(a.weight.split('-')[0] ))) return 1;
                   return 0
               })              
+              return {
+                  ...state,
+                  dogs: orderDogs
               }
-            return {
-                ...state,
-                dogs: orderDogs
-            }         
-                      
-
+            } 
         default:
             return state
     }

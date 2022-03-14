@@ -10,12 +10,16 @@ import './dogs.css'
 
 
 const Dogs = () => {
+
+  
+////////////////  ---->    local states   <------ /////////////////
   let [page, setPage] = useState(1);
   let [name, setName] = useState("");
   let [order, setOrder] = useState("asc");
   let [source, setSource] = useState("All");
   let [temps, setTemps] = useState("All");
   
+  ////////////////  ---->    store state   <------ /////////////////
   let { dogs, temperaments } = useSelector(state => state)
   
   const dispatch = useDispatch()
@@ -31,6 +35,8 @@ const Dogs = () => {
   useEffect(() => {
     setPage(1)  
   }, [heavy])
+
+  ////////////////  ---->    Input functions   <------ /////////////////
   
   const sourceDogs = (e) => {
     setSource(e.target.value)
@@ -52,8 +58,14 @@ const Dogs = () => {
     dispatch(sortDogs(value))
     console.log(dogs, "perros after peso")    
   }
+  
+    const handleName = (e) => {
+      e.preventDefault()
+      setName(e.target.value)
+      setPage(1)
+    }
 
-
+////////////////  ---->    pagination   <------ /////////////////
 page = page ? page : 1
 const dogsXPage = 8;
 const counter = dogs.length
@@ -67,17 +79,12 @@ let totalPages = Math.ceil(dogs.count / 8)
 
   
 
-  const handleName = (e) => {
-    e.preventDefault()
-    setName(e.target.value)
-    setPage(1)
-  }
-
 
 
   return (
     <div className="Home">
       <div className="filterAndOrders">
+      
         <div className="Filters">
           <label><strong>Filter by</strong>  </label>
           <div>
@@ -102,6 +109,7 @@ let totalPages = Math.ceil(dogs.count / 8)
             </select>
           </div>
         </div>
+
         <div className="Filters">
           <label><strong>Order by</strong></label>
           <div>
@@ -135,6 +143,7 @@ let totalPages = Math.ceil(dogs.count / 8)
           <label><strong>Results found: {dogs.count}</strong></label>
         </div>
       </div>
+
       {dogs.count ?
         <div>
           {page === 1 && totalPages === 1 ?
@@ -162,6 +171,7 @@ let totalPages = Math.ceil(dogs.count / 8)
         </div>}
       <>
       </>
+      
       {dogs.count ?
         <>
           <div className='dogsContainer'>

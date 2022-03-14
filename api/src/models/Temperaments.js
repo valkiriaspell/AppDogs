@@ -1,5 +1,5 @@
 const { DataTypes } = require('sequelize');
-//Modelo tabla de temperamentos
+
 module.exports = (sequelize) => {
   
   sequelize.define('temperaments', {    
