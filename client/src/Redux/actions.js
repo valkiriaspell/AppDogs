@@ -14,6 +14,7 @@ export const sortDogs = (order) => {
     return ({type: SORT_DOGS, payload: order})
 }
 
+
 export const getAllDogs = (name, order, source,temps) => async dispatch => {
     try{           
             const res = await axios.get(`http://localhost:3001/dogs?order=${order?order:""}&name=${name?name:""}&source=${source}&temps=${temps}`)

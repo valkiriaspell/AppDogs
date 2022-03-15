@@ -65,6 +65,14 @@ const Dogs = () => {
       setPage(1)
     }
 
+    const refresh = () => {
+      setPage(1);
+  setName("");
+  setOrder("asc");
+  setSource("All");
+  setTemps("All")
+  setHeavy("null") 
+    }
 ////////////////  ---->    pagination   <------ /////////////////
 page = page ? page : 1
 const dogsXPage = 8;
@@ -170,6 +178,7 @@ let totalPages = Math.ceil(dogs.count / 8)
           </ul>
         </div>}
       <>
+      <button className="btnRefresh" onClick={refresh} >Refresh</button>
       </>
       
       {dogs.count ?

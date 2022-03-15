@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, {  useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { createDog } from '../Redux/actions';
 import './createDog.css'
@@ -14,7 +14,6 @@ export default function CreateDog() {
   const [errorImage, setErrorImage] = useState("")
   const [errorTemps, setErrorTemps] = useState("")
   
-
 
   //////////  ---->    Local states data   <------ //////////////
   const [msg, setMSG] = useState('');
@@ -52,8 +51,6 @@ export default function CreateDog() {
     }
 
   }
-
-
 
 
   //////////////// ---->    VALIDATIONS    <------ /////////////
@@ -104,7 +101,7 @@ export default function CreateDog() {
         break;
 
       case e.target.name === "height":
-        if (e.target.value !== "" && e.target.value < 0 || e.target.value.includes(".")) {
+        if (e.target.value !== "" && e.target.value < 0) {
           setHeight(e.target.value);
           setErrorHmin("It can't be negative")
         } else if (Number(e.target.value) > 99) {
@@ -185,7 +182,7 @@ export default function CreateDog() {
           <label>Name:</label>
           <input className={errorName !== "" ? 'danger' : "lifeSpan"} name="name" value={name} placeholder="Name the breed" onChange={(e) => validation(e)} />
 
-          {!name ? null : <p className='error'>{errorName}</p>}
+          {errorName ? <p className='error'>{errorName}</p> : null }
         </div>
 
         <label>Weight:</label>
@@ -242,7 +239,7 @@ export default function CreateDog() {
         </div>
 
         <div className='submit'>
-          <input disabled={errorName || errorWmin || errorWmax || errorHmin || errorHmax || errorLifeSpan || errorImage || errorTemps} className={errorName || errorWmin || errorWmax || errorHmin || errorHmax || errorLifeSpan || errorImage || errorTemps ? "disabled" : "enabled"} type="submit" />
+          <input disabled={!name || errorName || errorWmin || errorWmax || errorHmin || errorHmax || errorLifeSpan || errorImage || errorTemps} className={errorName || errorWmin || errorWmax || errorHmin || errorHmax || errorLifeSpan || errorImage || errorTemps || !name ? "disabled" : "enabled"} type="submit" />
         </div>
         <div>
           {msg ? <p>{msg}</p> : null}

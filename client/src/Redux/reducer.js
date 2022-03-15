@@ -1,4 +1,4 @@
-import { GET_ALL_DOGS, GET_DOG, GET_ALL_TEMPERAMENTS, REMOVE_DOG, SORT_DOGS } from './actions.js'
+import { GET_ALL_DOGS, GET_DOG, GET_ALL_TEMPERAMENTS, REMOVE_DOG, SORT_DOGS} from './actions.js'
 
 
 const initialState = {
@@ -6,6 +6,7 @@ const initialState = {
     temperaments: [],
     dog: {},
     orderDogs: null,
+    
 }
 
 const rootReducer = (state = initialState, action) => {
@@ -15,7 +16,8 @@ const rootReducer = (state = initialState, action) => {
             return {
                 ...state,
                 dogs: action.payload,
-            };
+            }
+            
         case GET_DOG:
 
             return {
@@ -34,32 +36,33 @@ const rootReducer = (state = initialState, action) => {
                 ...state,
                 temperaments: action.payload,
 
-            };  
+            };
         case SORT_DOGS:
-            
+
             let orderDogs = []
-            if (action.payload === "least"){
-                orderDogs = state.dogs.sort(function(a, b){
-                    if(Number(a.weight.split('-')[0]) < (Number(b.weight.split('-')[0] ))) return -1;
-                    if(Number(b.weight.split('-')[0]) < (Number(a.weight.split('-')[0] ))) return 1;
+            if (action.payload === "least") {
+                orderDogs = state.dogs.sort(function (a, b) {
+                    if (Number(a.weight.split('-')[0]) < (Number(b.weight.split('-')[0]))) return -1;
+                    if (Number(b.weight.split('-')[0]) < (Number(a.weight.split('-')[0]))) return 1;
                     return 0
                 })
                 return {
                     ...state,
                     dogs: orderDogs
-                }  
+                }
             }
-            if (action.payload === "heavy"){   
-                orderDogs = state.dogs.sort(function(a, b){
-                  if(Number(a.weight.split('-')[0]) > (Number(b.weight.split('-')[0] ))) return -1;
-                  if(Number(b.weight.split('-')[0]) > (Number(a.weight.split('-')[0] ))) return 1;
-                  return 0
-              })              
-              return {
-                  ...state,
-                  dogs: orderDogs
-              }
-            } 
+            if (action.payload === "heavy") {
+                orderDogs = state.dogs.sort(function (a, b) {
+                    if (Number(a.weight.split('-')[0]) > (Number(b.weight.split('-')[0]))) return -1;
+                    if (Number(b.weight.split('-')[0]) > (Number(a.weight.split('-')[0]))) return 1;
+                    return 0
+                })
+                return {
+                    ...state,
+                    dogs: orderDogs
+                }
+            }       
+            
         default:
             return state
     }

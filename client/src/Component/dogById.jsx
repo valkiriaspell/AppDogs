@@ -27,7 +27,7 @@ const DogById = (props) => {
         <div className="dogDetail">
             {
 
-                dog?.name ?
+                dog?.name ? 
                     <>
                         <div className="imgDetail" style={divStyle}></div>
                         <div className="detail">

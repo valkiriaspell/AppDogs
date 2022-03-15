@@ -1,13 +1,10 @@
 .dogDetail {
-    display: flex;
-    flex-direction: row;
-    justify-content:space-around;    
-    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.849);      
-    text-align: left;
-    border-radius: 10px;
-    margin-left: 100px;
-    margin-right: 100px;    
-    background: rgba(0, 0, 0, 0.507);
+    margin-top: 110px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;  
     -webkit-backdrop-filter: blur(5px);
     backdrop-filter: blur(5px);
     vertical-align:auto;
@@ -22,7 +19,7 @@
 }
 
 .Load {
-    color: rgb(134, 60, 0);
+    color: rgb(255, 255, 255);
     display: flex;
     flex-direction: column;
     align-items: center;    
@@ -30,19 +27,25 @@
     margin-top: 30px;
 }
  .imgDetail{
-        margin-top: 40px;
+    display: flex;
+  size: 1em;
+  position: relative;
+  flex-direction: row;         
         height: 450px;
-        width: 350px;
+        width: 500px;
         background-size:cover;
         background-repeat: no-repeat;
-        background-position: center;
-        border-radius: 10%;        
-        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.692);            
+        background-position: center;                        
+        box-shadow: 0 10px 50px rgba(7, 17, 19, 0.616);            
  }
  
  .detail{
-     font-size: 24px;
-    display:flex;
-    flex-direction: column;
+    background-color: rgba(19, 22, 22, 0.815);      
+    display: flex;
+    flex-direction: column;    
+    color: white;
+    box-shadow: 0 10px 50px rgba(7, 17, 19, 0.616);
+     font-size: 20px;    
     justify-content: center;
+    padding: 25px;
  }

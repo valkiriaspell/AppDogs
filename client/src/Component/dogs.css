@@ -53,6 +53,20 @@
   text-align: center;
   margin-top: 5px;
 }
+.btnRefresh{
+  border: none; 
+  font-family: 'Roboto Slab', sans-serif;
+  font-size: 14px;
+  background-color: rgb(66, 39, 16);
+  color: white;
+  border-radius: 0.5rem;     
+  padding: 6px;
+  text-align: center;
+  margin-top: 5px;
+  cursor: pointer;
+}
+
+
 .dogsContainer {
     display: flex;
     flex-wrap: wrap;
