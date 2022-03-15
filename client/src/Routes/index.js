@@ -7,7 +7,7 @@ import LandingPage from "../Component/LandingPage.jsx"
 import CreateDog from "../Component/CreateDog.jsx"
 import "../App.css"
 import homeDog from "../images/dogBall.gif"
-import Contact from "../Component/Contact.jsx";
+
 
 
 
@@ -23,10 +23,7 @@ const index = () => {
                 <Route path='/home' component={Nav} />
                 <Route path='/createDog' component={Nav} />
 
-                <Route exact path="/home/:id" component={DogById}/>
-
-                <Route exact path="/contact" component={Nav}/>
-                <Route exact path="/contact" component={Contact}/>
+                <Route exact path="/home/:id" component={DogById}/>                
 
                 <Route exact path="/home">
                 <Dogs> </Dogs>
