@@ -4,8 +4,7 @@ import { useEffect } from "react";
 import { getAllDogs, sortDogs } from "../Redux/actions.js";
 import DogCard from "./dogCard.jsx";
 import { useState } from "react";
-import { FiArrowLeft } from "react-icons/fi";
-import { FiArrowRight } from "react-icons/fi";
+
 import './dogs.css'
 
 
@@ -163,11 +162,11 @@ let totalPages = Math.ceil(dogs.count / 8)
             :
             <ul className="pages">
               <button className="Paged_numbers" onClick={() => setPage(1)} disabled={page === 1}>{" << "}</button>
-              <button className="Paged_numbers" onClick={() => setPage(page - 1)} disabled={page === 1}><i><FiArrowLeft /></i></button>
+              <button className="Paged_numbers" onClick={() => setPage(page - 1)} disabled={page === 1}>{"<-"}</button>
               <button className="Paged_numbers" onClick={() => setPage(page - 1)} disabled={page === 1}>{page === 1 ? " " : page - 1} </button>
               <button className="Paged_numbers_page" >{page}</button>
               <button className="Paged_numbers" onClick={() => setPage(page + 1)} disabled={page === totalPages} >{page === totalPages ? " " : page + 1}</button>
-              <button className="Paged_numbers" onClick={() => setPage(page + 1)} disabled={page === totalPages} ><i><FiArrowRight /></i></button>
+              <button className="Paged_numbers" onClick={() => setPage(page + 1)} disabled={page === totalPages} >{"->"}</button>
               <button className="Paged_numbers" onClick={() => setPage(totalPages)} disabled={page === totalPages} >{" >> "}</button>
             </ul>
           }

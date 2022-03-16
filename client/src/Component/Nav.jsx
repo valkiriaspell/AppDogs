@@ -3,7 +3,8 @@ import { useDispatch } from "react-redux";
 import {NavLink} from 'react-router-dom'
 import { getAllTemperaments } from "../Redux/actions.js";
 import './Nav.css';
-// import SearchBar from './SearchBar';
+
+
 
 
 const Nav = () => {

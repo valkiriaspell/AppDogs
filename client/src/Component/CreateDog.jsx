@@ -180,7 +180,7 @@ export default function CreateDog() {
 
         <div className='formName'>
           <label>Name:</label>
-          <input className={errorName !== "" ? 'danger' : "lifeSpan"} name="name" value={name} placeholder="Name the breed" onChange={(e) => validation(e)} />
+          <input className={errorName !== "" ? 'danger' : "lifeSpan"} name="name" type="text" value={name} placeholder="Name the breed" onChange={(e) => validation(e)} />
 
           {errorName ? <p className='error'>{errorName}</p> : null }
         </div>
@@ -188,9 +188,9 @@ export default function CreateDog() {
         <label>Weight:</label>
         <div className='formNumbers'>
           <label>Min</label>
-          <input className={weight !== "" && errorWmin !== "" ? 'miniInput danger' : "miniInput"} type="number" name="weight" value={weight} onChange={(e) => validation(e)} />
+          <input className={weight !== "" && errorWmin !== "" ? 'miniInput danger' : "miniInput"} placeholder="kg" type="number" name="weight" value={weight} onChange={(e) => validation(e)} />
           <label>Max</label>
-          <input className={errorWmin !== "" || errorWmax !== "" ? 'miniInput danger' : "miniInput"} type="number" name="weightMax" value={weightMax} onChange={(e) => validation(e)} />
+          <input className={errorWmin !== "" || errorWmax !== "" ? 'miniInput danger' : "miniInput"} placeholder="kg" type="number" name="weightMax" value={weightMax} onChange={(e) => validation(e)} />
           <div>{errorWmin !== "" ? <p className='error'>{errorWmin}</p> : null}
             {weightMax !== "" && errorWmax !== "" ? <p className='error'>{errorWmax}</p> : null}
           </div>
@@ -199,16 +199,16 @@ export default function CreateDog() {
         <label>Height:  </label>
         <div className='formNumbers'>
           <label>Min</label>
-          <input className='miniInput' name="height" value={height} type="number" onChange={(e) => validation(e)} />
+          <input className='miniInput' placeholder="cm" name="height" value={height} type="number" onChange={(e) => validation(e)} />
           <label>Max</label>
-          <input className='miniInput' name="heightMax" value={heightMax} type="number" onChange={(e) => validation(e)} />
+          <input className='miniInput' placeholder="cm" name="heightMax" value={heightMax} type="number" onChange={(e) => validation(e)} />
           {errorHmin !== "" ? <p className='error'>{errorHmin}</p> : null}
           {heightMax !== "" && errorHmax !== "" ? <p className='error'>{errorHmax}</p> : null}
         </div>
 
         <div className='lifespan'>
           <label>Life span:</label>
-          <input name="lifeSpan" type="number" value={lifeSpan} onChange={(e) => validation(e)} />
+          <input name="lifeSpan" placeholder="Years" type="number" value={lifeSpan} onChange={(e) => validation(e)} />
         {errorLifeSpan !== "" ? <p className='error'>{errorLifeSpan}</p> : null}
         </div>
 
@@ -235,7 +235,7 @@ export default function CreateDog() {
         <div className='selectionPart'>
           {temps ? temps.map((t, index) => (
             <button className="tempChoosed" key={index} name={t} onClick={(e) => removeTemp(e)}>{t} X</button>
-          )) : "nothing yet"}<br></br>
+          )) : "nothing yet"}<br></br> 
         </div>
 
         <div className='submit'>

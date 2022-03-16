@@ -7,9 +7,7 @@ import { Link } from 'react-router-dom';
 function DogCard (props) {
 
 
-    var divStyle = { backgroundImage: 'url(' + props.image + ')', width: '300px' }
-
-       
+    var divStyle = { backgroundImage: 'url(' + props.image + ')', width: '300px' }       
 
 
     return (

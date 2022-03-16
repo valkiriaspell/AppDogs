@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Routes /> debería mostrar <Routes /> correctamente  1`] = `
+<div
+  className="App"
+>
+  <img
+    alt="homedog"
+    className="Home_dog"
+    src="dogBall.gif"
+  />
+  <Route
+    exact={true}
+    path="/"
+  >
+    <LandingPage>
+       
+    </LandingPage>
+  </Route>
+  <Route
+    component={[Function]}
+    path="/home"
+  />
+  <Route
+    component={[Function]}
+    path="/createDog"
+  />
+  <Route
+    component={[Function]}
+    exact={true}
+    path="/home/:id"
+  />
+  <Route
+    exact={true}
+    path="/home"
+  >
+    <Dogs>
+       
+    </Dogs>
+  </Route>
+  <Route
+    path="/createDog"
+  >
+     
+    <CreateDog />
+     
+  </Route>
+</div>
+`;
