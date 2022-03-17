@@ -2,7 +2,10 @@ import React from "react";
 import yo from '../images/yo-circulo-naranja.png';
 import { BsGithub } from "react-icons/bs";
 import { BsLinkedin } from "react-icons/bs";
-import {BsWhatsapp} from 'react-icons/bs'; 
+import {BsWhatsapp} from 'react-icons/bs';
+import { FaReact } from "react-icons/fa";
+import { SiRedux } from "react-icons/si";
+import { SiExpress } from "react-icons/si";
 import "./about.css";
 
 function About() {
@@ -14,6 +17,13 @@ function About() {
 
        <div id="cardP">
       <p className="cardP__name">Valkiria Salerno</p>   
+      <div><p className="secTitle"> This is a catalog type web application created by applying the following technologies: </p></div>
+      <ul className="tech-icons">
+        <FaReact />
+        <SiRedux />
+        <SiExpress />
+        
+      </ul>
       <p className="secTitle">Front End Developer</p>   
       <p className="secTitle">UI/UX Designer</p>         
       

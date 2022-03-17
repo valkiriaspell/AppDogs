@@ -52,11 +52,11 @@ __IMPORTANTE__: Para las funcionalidades de filtrado y ordenamiento NO se utiliz
 
 #### Rutas y componentes:
 
- "/" component= {LandingPage}
-'/home' components= {Nav} && {Dogs}
-'/createDog' component= {createDog}
-'/home/:id' component= {DogById}
-'/about' component= {About}                
+- "/" component= {LandingPage}
+- '/home' components= {Nav} && {Dogs}
+- '/createDog' component= {createDog}
+- '/home/:id' component= {DogById}
+- '/about' component= {About}                
 
 #### Backend
 
