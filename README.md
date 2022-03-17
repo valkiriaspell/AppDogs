@@ -1,7 +1,11 @@
 # Individual Project - Henry Dogs
 
 <p align="left">
-  <img height="200" src="./dog.png" />
+  <img height="300" src="./client/src/images/PI-1.jpg" />
+</p>
+
+<p align="left">
+  <img height="300" src="./client/src/images/PI-2.jpg" />
 </p>
 
 ## Objetivos logrados
