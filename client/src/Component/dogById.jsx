@@ -37,6 +37,7 @@ const DogById = (props) => {
                             <p>Max height: {dog.height.slice(-2)} cm.</p>
                             <p>Min weight: {dog.weight.slice(0, 2)} kgs.</p>
                             <p>Max weight: {dog.weight.slice(-2)} kgs.</p>
+                            <p>Origin: {dog.origin}</p>
                             <p>Temperaments: {dog.temperament}</p>
 
 

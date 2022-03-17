@@ -5,6 +5,7 @@ import DogById from "../Component/dogById.jsx";
 import Nav from "../Component/Nav.jsx"
 import LandingPage from "../Component/LandingPage.jsx"
 import CreateDog from "../Component/CreateDog.jsx"
+import About from "../Component/About.jsx"
 import "../App.css"
 import homeDog from "../images/dogBall.gif"
 
@@ -22,9 +23,12 @@ const index = () => {
                 </Route>
                 <Route path='/home' component={Nav} />
                 <Route path='/createDog' component={Nav} />
+                <Route exact path="/about" component={Nav}/>                
 
                 <Route exact path="/home/:id" component={DogById}/>                
 
+                <Route exact path="/about" component={About}/>
+                                
                 <Route exact path="/home">
                 <Dogs> </Dogs>
                 </Route>

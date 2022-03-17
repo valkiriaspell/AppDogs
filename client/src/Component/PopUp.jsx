@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import dogy from "../images/dogAsking.gif"
 
 export default class PopUp extends Component {
+  
     handleClick = () => {
       this.props.toggle();
     };

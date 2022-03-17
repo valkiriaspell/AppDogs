@@ -117,7 +117,7 @@ const getDogById = async (req, res, next) => {
                 name: dog.name,
                 weight: dog.weight.metric,
                 height: dog.height.metric,
-                name: dog.name,
+                origin: dog.origin,
                 life_span: dog.life_span,
                 image: dog.image.url,
                 temperament: dog.temperament

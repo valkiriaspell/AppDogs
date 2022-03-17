@@ -17,6 +17,7 @@ describe('Dogs model', () => {
       it('should work when its has at least a name', () => {
         Dogs.create({ name: 'Pug' });
       });
+      
       it('should throw an error if datatype is not correct', function(done) {
         Dogs.create({
           name: 'Dogy',

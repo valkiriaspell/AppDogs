@@ -23,7 +23,7 @@ useEffect(()=>{
                
             <NavLink exact to='/createDog' activeClassName="linkSelected" className="btn draw-border"> Add New Breed </NavLink>
                 
-            {/* <NavLink exact to="/contact" activeClassName="linkSelected" className="btn draw-border"> Contact </NavLink> */}
+            <NavLink exact to="/about" activeClassName="linkSelected" className="btn draw-border"> About </NavLink>
                         
             </div>
       
