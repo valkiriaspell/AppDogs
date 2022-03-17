@@ -1,6 +1,7 @@
 import React, {  useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { createDog } from '../Redux/actions';
+import {useHistory} from 'react-router-dom'
 import './createDog.css'
 
 export default function CreateDog() {
@@ -29,7 +30,7 @@ export default function CreateDog() {
   //////////  ---->    Store states    <------ //////////////
   const { temperaments } = useSelector(state => state)
   const dispatch = useDispatch()
-
+  const history = useHistory();
 
   //////////  ---->    HandleTemps    <------ //////////////
   function tempsDogs(e) {
@@ -45,7 +46,7 @@ export default function CreateDog() {
   function removeTemp(e) {
     var finded = temps.findIndex(t => t === e.target.name)
     setTemps(temps.filter((t, index) => index !== finded))
-    console.log(temps, "hay menos de 4 temps")
+    
     if (temps.length <= 6) {
       setErrorTemps("")
     }
@@ -167,8 +168,11 @@ export default function CreateDog() {
       image: image,
       temperament: temps
     }))
-    console.log(weight.concat(' - ', weightMax), "weight sended");
     setMSG("You have created a New Breed")
+    setTimeout(() => {setMSG("...Going back to Home now")}, 3000);
+    
+    setTimeout(() => {history.push('/home')}, 5000);
+    
   }
 
 
@@ -242,7 +246,7 @@ export default function CreateDog() {
           <input disabled={!name || errorName || errorWmin || errorWmax || errorHmin || errorHmax || errorLifeSpan || errorImage || errorTemps} className={errorName || errorWmin || errorWmax || errorHmin || errorHmax || errorLifeSpan || errorImage || errorTemps || !name ? "disabled" : "enabled"} type="submit" />
         </div>
         <div>
-          {msg ? <p>{msg}</p> : null}
+          {msg ? <p className="msg">{msg}</p> : null}
         </div>
       </form>
     </div>

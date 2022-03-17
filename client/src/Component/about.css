@@ -22,7 +22,7 @@
   color: white;
   box-shadow: 0 10px 50px rgba(7, 17, 19, 0.616);
   width: 35em;
-  padding: 1em;
+  
 }
 
 .cardP__name {
@@ -140,11 +140,9 @@
   margin: 1em;
 }
 
-.tech-icons {
-  display: flex;
-  display: inline-block;
-  margin: 0.25em;
-  position: relative;
+.tech-icons li {
+  display: inline-block;  
+  margin: 0.25em;    
   font-size: 2.5em;   
 }
 
@@ -198,12 +196,7 @@
   transition: all 265ms ease-in;
 }
 
-.grid-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 20px;
-  font-size: 1.2em;
-}
+
 
  
   

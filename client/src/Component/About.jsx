@@ -19,9 +19,9 @@ function About() {
       <p className="cardP__name">Valkiria Salerno</p>   
       <div><p className="secTitle"> This is a catalog type web application created by applying the following technologies: </p></div>
       <ul className="tech-icons">
-        <FaReact />
-        <SiRedux />
-        <SiExpress />
+        <li><FaReact /></li>
+        <li><SiRedux /></li>
+        <li><SiExpress /></li>
         
       </ul>
       <p className="secTitle">Front End Developer</p>   
