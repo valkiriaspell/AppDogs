@@ -3,9 +3,9 @@ import yo from '../images/yo-circulo-naranja.png';
 import { BsGithub } from "react-icons/bs";
 import { BsLinkedin } from "react-icons/bs";
 import {BsWhatsapp} from 'react-icons/bs'; 
-import "./contact.css";
+import "./about.css";
 
-function Contact() {
+function About() {
     return  <div className="container">
           
            <div className="imageBox">
@@ -22,10 +22,10 @@ function Contact() {
         <li><a href="https://github.com/valkiriaspell"><i><BsGithub /></i></a></li>
         <li><a href="https://wa.link/724wn8"><i><BsWhatsapp /></i></a></li>               
       </ul>
-      <button className="btn draw-border">Follow</button>
-      <button className="btn draw-border">Message</button>
+      <a href="https://www.linkedin.com/in/valkiria-salerno-9860a6164"><button className="btn draw-border">Follow</button></a>
+      <a href="https://wa.link/724wn8"><button className="btn draw-border">Message</button></a>
     </div>
   </div>          
 }
-export default Contact;
+export default About;
 
