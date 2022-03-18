@@ -10,7 +10,7 @@
   height: 100vh;  
   font-family: 'Baloo Paaji 2', cursive;
   -webkit-backdrop-filter: blur(5px);
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);    
 }
 
 #cardP {
