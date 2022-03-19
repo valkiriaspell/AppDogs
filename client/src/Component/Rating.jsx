@@ -13,8 +13,9 @@ const Rate = (props) => {
   const [rate, setRate] = useState(0);
   const [msg, setMSG] = useState("");
 
-  const {id} = props
   const dispatch = useDispatch()
+  const {id} = props
+  const {mje} = props
 
  const {ratingDogs} = useSelector(state => state)
 
@@ -32,7 +33,7 @@ const Rate = (props) => {
 
   return (
       <div className="rating">
-        <label className="loveit">How much do you love it?</label>
+        {mje?<label className="loveit">{mje}</label>:null}
     <Container>
       {[...Array(5)].map((item, index) => {
           const givenRating = index + 1;

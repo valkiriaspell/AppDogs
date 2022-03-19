@@ -41,7 +41,7 @@ const DogById = (props) => {
                             <p>Origin: {dog.origin}</p>
                             <p>Temperaments: {dog.temperament}</p>
 
-                            <Rate id={id}></Rate>
+                            <Rate id={id} mje="How much do you love it?"></Rate>
                         </div>
                     </>
                     :

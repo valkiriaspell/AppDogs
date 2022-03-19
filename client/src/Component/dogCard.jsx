@@ -1,13 +1,15 @@
-import React from 'react';
+import React, { useState } from "react";
 import './dogCard.css';
 import { Link } from 'react-router-dom';
+import { Container, Radio, Rating } from "./RatingStyles";
+import { AiOutlineHeart } from "react-icons/ai";
 
 
 
-function DogCard (props) {
+function DogCard(props) {
 
-
-    var divStyle = { backgroundImage: 'url(' + props.image + ')', width: '300px' }       
+    const [rate, setRate] = useState(props.id)
+    var divStyle = { backgroundImage: 'url(' + props.image + ')', width: '300px' }
 
 
     return (
@@ -37,8 +39,33 @@ function DogCard (props) {
 
                     </tbody>
                 </table>
-                <Link to={`/home/${props.id}`}><button className='btnSeeDog'>See more</button></Link>           
+                <Link to={`/home/${props.id}`}><button className='btnSeeDog'>See more</button></Link>
 
+                <Container>
+                    {[...Array(5)].map((item, index) => {
+                        const suma = props.id 
+                        const givenRating = index + suma;
+                        return (
+                            <label key={index}>
+                                <Radio
+                                    type="radio"
+                                    value={givenRating}
+                                    disabled={rate !== 0}                                    
+                                />
+                                <Rating>
+                                    <AiOutlineHeart
+                                        color={
+                                            givenRating < rate || givenRating === rate
+                                                ? "rgb(139, 1, 1)"
+                                                : "000"
+                                        }
+                                    />
+                                </Rating>
+                            </label>
+                        );
+                    })}
+                </Container>
+                    <label className="score">Score: {props.id/10}</label>
             </div>
         </div>
 
