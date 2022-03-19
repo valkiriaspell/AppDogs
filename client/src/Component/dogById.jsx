@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getDogById, removeDog } from "../Redux/actions";
 import './dogById.css'
 import dogy from "../images/dog14.gif"
-import Rating from './Rating';
+import Rate from './Rating';
 
 
 const DogById = (props) => {
@@ -41,7 +41,7 @@ const DogById = (props) => {
                             <p>Origin: {dog.origin}</p>
                             <p>Temperaments: {dog.temperament}</p>
 
-                            <Rating id={id}></Rating>
+                            <Rate id={id}></Rate>
                         </div>
                     </>
                     :
