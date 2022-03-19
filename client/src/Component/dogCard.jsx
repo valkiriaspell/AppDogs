@@ -11,6 +11,7 @@ function DogCard(props) {
     const [rate, setRate] = useState(props.id)
     var divStyle = { backgroundImage: 'url(' + props.image + ')', width: '300px' }
 
+    var suma = Math.random() * (props.id*2)
 
     return (
         <div className='Card'>
@@ -40,10 +41,9 @@ function DogCard(props) {
                     </tbody>
                 </table>
                 <Link to={`/home/${props.id}`}><button className='btnSeeDog'>See more</button></Link>
-
                 <Container>
                     {[...Array(5)].map((item, index) => {                         
-                        const givenRating = index + (Math.random() * (props.id*2));    //0+ n entre 0 y 10
+                        const givenRating = index + suma ;    //0+ n entre 0 y 10
                         console.log(givenRating)
                         return (
                             <label key={index}>
