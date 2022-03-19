@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getDogById, removeDog } from "../Redux/actions";
 import './dogById.css'
 import dogy from "../images/dog14.gif"
-import Rating from './components/Rating';
+import Rating from './Rating';
 
 
 const DogById = (props) => {

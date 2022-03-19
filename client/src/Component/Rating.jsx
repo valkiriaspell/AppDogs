@@ -4,15 +4,23 @@ import { Container, Radio, Rating } from "./RatingStyles";
 import { AiOutlineHeart } from "react-icons/ai";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 
 
 const Rate = (props) => {
   const [rate, setRate] = useState(0);
+  const [msg, setMSG] = useState("");
+
   const {id} = props
+  const dispatch = useDispatch()
 
  const {ratinDogs} = useSelector(state => state)
 
+ useEffect(() => {
+       
+   }, [rate])
+   
   const voting = (rating) => {
     
     setRate(rating)
@@ -21,9 +29,6 @@ const Rate = (props) => {
     setMSG("Thanks for voting")
 
     
-    useEffect(() => {
-          
-      }, [rate])
 
   return (
     <Container>
