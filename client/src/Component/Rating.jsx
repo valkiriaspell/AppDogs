@@ -25,7 +25,8 @@ const Rate = (props) => {
     setRate(rating)
     dispatch(rateDogs({id: id, votes:
         rating}))
-    setMSG("Thanks for voting")
+    setMSG("Thanks for voting!")
+    console.log(ratingDogs)
     }
     
 
@@ -36,10 +37,11 @@ const Rate = (props) => {
       {[...Array(5)].map((item, index) => {
           const givenRating = index + 1;
           return (
-              <label>
+              <label key={index}>
             <Radio
               type="radio"
               value={givenRating}
+              disabled={rate !== 0}
               onClick={() => {
                   voting(givenRating);                
                 }}
