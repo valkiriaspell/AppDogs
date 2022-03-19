@@ -4,7 +4,8 @@ export const GET_DOG = 'GET_DOG'
 export const GET_ALL_TEMPERAMENTS = 'GET_ALL_TEMPERAMENTS'
 export const REMOVE_DOG = 'REMOVE_DOG'
 export const CREATE_DOG = 'CREATE_DOG'
-export const SORT_DOGS = 'CREATE_DOG'
+export const SORT_DOGS = 'SORT_DOG'
+export const RATE_DOGS = 'RATE_DOG'
 export const GET_DOG_BY_NAME = 'GET_DOG_BY_NAME'
 export const ORDER_BY_WEIGHT = 'ORDER_BY_WEIGHT'
 
@@ -13,7 +14,10 @@ export const sortDogs = (order) => {
     console.log(order, "aqui llega order a la action")    
     return ({type: SORT_DOGS, payload: order})
 }
-
+export const rateDogs = (dog) => { 
+    console.log(dog, "aqui llega dog id with rating")  //{id: , votes: }  
+    return ({type: RATE_DOGS, payload: dog})
+}
 
 export const getAllDogs = (name, order, source,temps) => async dispatch => {
     try{           

@@ -1,4 +1,4 @@
-import { GET_ALL_DOGS, GET_DOG, GET_ALL_TEMPERAMENTS, REMOVE_DOG, SORT_DOGS} from './actions.js'
+import { GET_ALL_DOGS, GET_DOG, GET_ALL_TEMPERAMENTS, REMOVE_DOG, SORT_DOGS, RATE_DOGS} from './actions.js'
 
 
 const initialState = {
@@ -6,7 +6,7 @@ const initialState = {
     temperaments: [],
     dog: {},
     orderDogs: null,
-    
+    ratingDogs:[]
 }
 
 const rootReducer = (state = initialState, action) => {
@@ -61,7 +61,19 @@ const rootReducer = (state = initialState, action) => {
                     ...state,
                     dogs: orderDogs
                 }
-            }       
+            }
+            case RATE_DOGS:
+                if (state.ratingDogs.length){
+                    let dogvoted = state.ratingDogs.findIndex(d => d.id === action.payload.id)
+                    if (dogvoted >= 0) {
+                        state.ratingDogs[dogvoted].votes = state.ratingDogs[dogvoted].votes + action.payload.votes
+                    } else {
+                        state.ratingDogs.push(action.payload)
+                      }
+                }
+            return {
+                ...state,           
+            };       
             
         default:
             return state
