@@ -10,7 +10,9 @@
   color: white;
   
 }
-
+a {
+  text-decoration: none;
+}
 
 .Home_dog {
   position: fixed;

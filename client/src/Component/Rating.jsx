@@ -26,7 +26,7 @@ const Rate = (props) => {
     dispatch(rateDogs({id: id, votes:
         rating}))
     setMSG("Thanks for voting!")
-    console.log(ratingDogs)
+    setTimeout(() => {setMSG("Score: 4.2 ||||| Total votes: 6")}, 2200);    
     }
     
 
