@@ -21,7 +21,7 @@ export const rateDogs = (dog) => {
 
 export const getAllDogs = (name, order, source,temps) => async dispatch => {
     try{           
-            const res = await axios.get(`https://dogs-catalog.herokuapp.com/dogs?order=${order?order:""}&name=${name?name:""}&source=${source}&temps=${temps}`)
+            const res = await axios.get(`/dogs?order=${order?order:""}&name=${name?name:""}&source=${source}&temps=${temps}`)
             console.log("perros filtrados")            
             return dispatch({ type: GET_ALL_DOGS, payload: res.data })
       
@@ -34,7 +34,7 @@ export const getAllDogs = (name, order, source,temps) => async dispatch => {
 
 export const getDogById = (id)=> async (dispatch)=>{
         try {
-            const result = await axios.get(`https://dogs-catalog.herokuapp.com/dog/${id}`)
+            const result = await axios.get(`/dog/${id}`)
             return dispatch({
                 type: GET_DOG,
                 payload: result.data
@@ -54,7 +54,7 @@ export const removeDog = ()=> {
 
 export const getAllTemperaments = () => async dispatch => {
     try{
-        let res = await axios.get('https://dogs-catalog.herokuapp.com/temperament')
+        let res = await axios.get('/temperament')
         res = res.data.sort((a,b) =>{
             return a.name.toLowerCase().localeCompare(b.name.toLowerCase())
         })
@@ -67,7 +67,7 @@ export const getAllTemperaments = () => async dispatch => {
 
 export const createDog = (dog)=> {
     return ()=>{
-        axios.post(`https://dogs-catalog.herokuapp.com/dog`,dog)      
+        axios.post(`/dog`,dog)      
         .catch((err)=>{
             console.log(err)
         })
