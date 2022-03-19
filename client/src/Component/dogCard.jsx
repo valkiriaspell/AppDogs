@@ -42,9 +42,9 @@ function DogCard(props) {
                 <Link to={`/home/${props.id}`}><button className='btnSeeDog'>See more</button></Link>
 
                 <Container>
-                    {[...Array(5)].map((item, index) => {
-                        const suma = props.id 
-                        const givenRating = index + suma;
+                    {[...Array(5)].map((item, index) => {                         
+                        const givenRating = index + (Math.random() * (props.id*2));    //0+ n entre 0 y 10
+                        console.log(givenRating)
                         return (
                             <label key={index}>
                                 <Radio
