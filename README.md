@@ -8,6 +8,10 @@
   <img height="300" src="./client/src/images/PI-2.jpg" />
 </p>
 
+## DEPLOY
+
+https://app-dogs-valkiriaspell.vercel.app/
+
 ## Objetivos logrados
 
 - Construir una App utilizando React, Redux, Node y Sequelize.
