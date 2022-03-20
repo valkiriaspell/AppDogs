@@ -73,7 +73,7 @@ const Dogs = () => {
   setHeavy("null") 
     }
 ////////////////  ---->    pagination   <------ /////////////////
-page = page ? page : 1
+
 const dogsXPage = 8;
 const counter = dogs.length
 let result = dogs.slice((dogsXPage * (page - 1)), (dogsXPage * (page - 1)) + dogsXPage)
