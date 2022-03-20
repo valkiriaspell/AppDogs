@@ -22,12 +22,15 @@ const Rate = (props) => {
  useEffect(() => {       
    }, [rate,msg])
 
+   var suma = Math.random() * (props.id*2)
+   var numb = suma.toString().slice(0,3)
+
   const voting = (rating) => {    
     setRate(rating)
     dispatch(rateDogs({id: id, votes:
         rating}))
     setMSG("Thanks for voting!")
-    setTimeout(() => {setMSG("Score: 4.2 ||||| Total votes: 6")}, 2200);    
+    setTimeout(() => {setMSG("Score:"+ numb + " Total votes:" + Math.ceil(suma)+1)}, 2000);    
     }
     
 
