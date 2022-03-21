@@ -30,7 +30,7 @@ const {saveTemps} = require ('./src/api-calls/temps.js')
 //   });process.env.PORT
 // });
 
-conn.sync({ force: true }).then(() => {
+conn.sync({ force: false }).then(() => {
   server.listen(process.env.PORT, async () => {
     const preload = await saveTemps()
     console.log('El servidor esta escuchando en el puerto 3001'); // eslint-disable-line no-console
