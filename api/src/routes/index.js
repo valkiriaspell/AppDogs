@@ -1,5 +1,6 @@
 const { Router } = require('express');
-const {getDogs, createDog, getDogById} = require ('../api-calls/dogs.js')
+const {getDogs, createDog, getDogById} = require ('../api-calls/dogs.js');
+const ratingDog = require('../api-calls/rating.js');
 const {getTemps} = require("../api-calls/temps.js"); 
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
@@ -12,6 +13,8 @@ const router = Router();
 router.get('/dogs', getDogs)
 
 router.post('/dog', createDog)
+
+router.post('/rating', ratingDog)
 
 router.get('/dog/:id', getDogById)
 

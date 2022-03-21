@@ -14,9 +14,17 @@ export const sortDogs = (order) => {
     console.log(order, "aqui llega order a la action")    
     return ({type: SORT_DOGS, payload: order})
 }
-export const rateDogs = (dog) => { 
-    console.log(dog, "aqui llega dog id with rating")  //{id: , votes: }  
-    return ({type: RATE_DOGS, payload: dog})
+
+export const ratingDogs = (dog)=> async dispatch => {
+    console.log(dog, "aqui llega dog id with rating")
+    try{ 
+        const res = axios.post(`/rating`,dog)
+        console.log("votos enviados")  
+        return dispatch({ type: RATE_DOGS, payload: res.data })     
+        
+    } catch(e) {
+        console.log(e)        
+    }
 }
 
 export const getAllDogs = (name, order, source,temps) => async dispatch => {

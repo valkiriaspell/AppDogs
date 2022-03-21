@@ -6,7 +6,7 @@ const initialState = {
     temperaments: [],
     dog: {},
     orderDogs: null,
-    ratingDogs:[]
+    rateDogs:[]
 }
 
 const rootReducer = (state = initialState, action) => {
@@ -62,22 +62,10 @@ const rootReducer = (state = initialState, action) => {
                     dogs: orderDogs
                 }
             }
-            case RATE_DOGS:
-                let newRatingDogs = state.ratingDogs //[{id: 3, votes: 2},{id: 5, votes: 1},{id: 8, votes: 4}]
-                console.log(newRatingDogs,"aqui")
-                if (state.ratingDogs.length){
-                    let dogvoted = state.ratingDogs.findIndex(d => d.id === action.payload.id)
-                    if (dogvoted >= 0) {
-                        newRatingDogs = newRatingDogs[dogvoted].votes + action.payload.votes
-                    } else {
-                        newRatingDogs.push(action.payload)
-                      }
-                } else {
-                    newRatingDogs.push(action.payload)
-                }
+            case RATE_DOGS:               
             return {
                 ...state,
-                ratingDogs: newRatingDogs           
+                rateDogs: action.payload         
             };       
             
         default:

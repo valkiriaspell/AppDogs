@@ -11,7 +11,11 @@ const DogById = (props) => {
 
     const { id } = props.match.params
     const { dog } = useSelector(state => state)
+    const { rateDogs } = useSelector(state => state)
     const dispatch = useDispatch()
+
+
+     //[{id: 3, votes: 2},{id: 5, votes: 1},{id: 8, votes: 4}]    
 
 
     useEffect(() => {

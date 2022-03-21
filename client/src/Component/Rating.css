@@ -6,3 +6,11 @@
 .loveit {
     font-size: 20px;    
 }
+
+.black {
+    color: black
+}
+
+.red {
+    color: rgb(139, 1, 1)
+}
