@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
-import { getAllDogs, sortDogs } from "../Redux/actions.js";
+import { allRatings, getAllDogs, sortDogs } from "../Redux/actions.js";
 import DogCard from "./dogCard.jsx";
 import { useState } from "react";
 
@@ -26,6 +26,7 @@ const Dogs = () => {
   
   useEffect(() => {
     dispatch(getAllDogs(name, order, source, temps))
+    dispatch(allRatings())
   }, [name, order, source, temps])
     
   

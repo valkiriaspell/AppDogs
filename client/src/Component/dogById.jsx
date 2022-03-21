@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { getDogById, removeDog } from "../Redux/actions";
+import { allRatings, getDogById, removeDog } from "../Redux/actions";
 import './dogById.css'
 import dogy from "../images/dog14.gif"
 import Rate from './Rating';
@@ -19,7 +19,8 @@ const DogById = (props) => {
 
 
     useEffect(() => {
-        dispatch(getDogById(id))
+        dispatch(getDogById(id));
+        dispatch(allRatings())
         
         return () => {
             dispatch(removeDog())

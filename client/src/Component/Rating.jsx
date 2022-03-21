@@ -16,21 +16,24 @@ const Rate = (props) => {
   const dispatch = useDispatch()
   const {id} = props
   const {mje} = props
-
+  
+  useEffect(() => {
+          
+  }, [rate,msg])
+  
   const { rateDogs } = useSelector(state => state)
 
-  
-  useEffect(() => {       
-  }, [rate,msg])
   
   
   const voting = (rating) => {    
     setRate(rating)
     dispatch(ratingDogs({id: id, votes:
       rating}))
-      setMSG("Thanks for voting!")   
+      setMSG("Thanks for voting!")
+      dispatch(allRatings())    
       if (rateDogs){
         var dogvoted = rateDogs.find(d => d.id === id);
+        console.log(dogvoted, "dogvoted")
         if (dogvoted){          
           var loveScore = dogvoted.votes/dogvoted.totalVotes
          setTimeout(() => {setMSG("Love Score: "+ loveScore.toFixed(2) + " Total votes: " + dogvoted.totalVotes)},3000);    
