@@ -20,6 +20,7 @@ const Dogs = () => {
   
   ////////////////  ---->    store state   <------ /////////////////
   let { dogs, temperaments } = useSelector(state => state)
+  const { rateDogs } = useSelector(state => state)
   
   const dispatch = useDispatch()
   
@@ -72,7 +73,9 @@ const Dogs = () => {
   setTemps("All")
   setHeavy("null") 
     }
-////////////////  ---->    pagination   <------ /////////////////
+
+    
+    ////////////////  ---->    pagination   <------ /////////////////
 
 const dogsXPage = 8;
 const counter = dogs.length
@@ -84,9 +87,24 @@ dogs = {
 
 let totalPages = Math.ceil(dogs.count / 8)
 
-  
+////////////////  ---->    loveScore   <------ /////////////////
+// const dogsIds = dogs.result.map(d => d.id)// ["23","3","145","22","52","89"]
 
-
+// if (rateDogs){
+//   let i = 0;
+//   let loveScores = []
+//   while (i < dogsIds.length) {
+//     for(let j = 0; j < rateDogs.length; j++) {
+//       var dogFound = rateDogs.find(d => d.id === dogsIds[i]);
+//       dogFound?loveScores.push(dogFound): null;
+//       i++
+//     }
+//   }
+//   if (dogvoted){          
+//   var loveScore = dogvoted.votes/dogvoted.totalVotes
+//    setRate(loveScore.toFixed(2));
+//   }
+// } 
 
   return (
     <div className="Home">
@@ -192,7 +210,7 @@ let totalPages = Math.ceil(dogs.count / 8)
                 life_span={dog.life_span}
                 temperament={dog.temperament}
                 image={dog.image}
-                id={dog.id}
+                id={dog.id}               
               />
             ))}
           </div>

@@ -17,13 +17,15 @@ export const sortDogs = (order) => {
 
 export const ratingDogs = (dog)=> dispatch => {
     console.log(dog, "aqui llega dog id with rating")
-       axios.post(`/rating`,dog)       
+       axios.post('/rating',dog)       
        .catch(e=>console.log(e))        
    }
 
 export const allRatings = ()=> dispatch => {    
-       axios.get(`/ratings`)
+       axios.get('/ratings')
+       .then(r => r)
        .then(r =>dispatch({ type: RATE_DOGS, payload: r.data }))
+       
        .catch(e=>console.log(e))        
  }
 

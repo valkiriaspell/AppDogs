@@ -28,17 +28,18 @@ const Rate = (props) => {
     setRate(rating)
     dispatch(ratingDogs({id: id, votes:
       rating}))
-    dispatch(allRatings())
-      
+      setMSG("Thanks for voting!")   
       if (rateDogs){
-        var dogvoted = rateDogs.find(d => d.id === id)
-        console.log(dogvoted, "aqui dogsvoted del store")        
-        setMSG("Thanks for voting!")
-        setTimeout(() => {setMSG("Score:"+ dogvoted.votes/5 + " Total votes:" + dogvoted.totalVotes)}, 2000);    
-    } else {
-      setMSG("Thanks for voting!")
+        var dogvoted = rateDogs.find(d => d.id === id);
+        var loveScore = dogvoted.votes/dogvoted.totalVotes
+        if (dogvoted){          
+         setTimeout(() => {setMSG("Love Score: "+ loveScore.toFixed(2) + " Total votes: " + dogvoted.totalVotes)},3000);    
+      } else {
+        setTimeout(() => {setMSG("Love Score: "+ rating + " Total votes: " + 1)},3000);
+      }
     }
-    }
+  }
+  
     
 
   return (

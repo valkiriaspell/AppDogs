@@ -1,20 +1,33 @@
 import React, { useState } from "react";
 import './dogCard.css';
 import { Link } from 'react-router-dom';
-import { Container, Radio, Rating } from "./RatingStyles";
-import { AiOutlineHeart } from "react-icons/ai";
 import { FaHeart } from "react-icons/fa";
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
 
 
 
 
 function DogCard(props) {
 
-    const [rate, setRate] = useState(props.id)
-    var divStyle = { backgroundImage: 'url(' + props.image + ')', width: '300px' }
+    const [rate, setRate] = useState(0)
 
-    var suma = Math.random() * (props.id*2)
-    var numb = suma.toString().slice(0,3)
+    const { rateDogs } = useSelector(state => state)
+
+    var divStyle = { backgroundImage: 'url(' + props.image + ')', width: '300px' }
+    
+    if (rateDogs){
+        console.log(rateDogs)
+        var dogVoted = rateDogs.find(d => d.id === props.id)
+        console.log(dogVoted, "aqui perro votado")
+          if (dogVoted){          
+          var loveScore = dogVoted.votes/dogVoted.totalVotes
+           setRate(loveScore.toFixed(2));
+          }
+        }
+    
+        useEffect(() => {              
+          }, [rate]) 
 
     return (
         <div className='Card'>
@@ -45,7 +58,7 @@ function DogCard(props) {
                             <td><FaHeart
                                         color={"rgb(139, 1, 1)"                                           
                                         }
-                                    /> {numb}</td>
+                                    /> {loveScore?loveScore.toFixed(2):0}</td>
                         </tr>                       
 
                     </tbody>

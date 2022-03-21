@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { NavLink, Link } from 'react-router-dom'
 import { useLocation } from 'react-router-dom'
-import { getAllTemperaments } from "../Redux/actions.js";
+import { allRatings, getAllTemperaments } from "../Redux/actions.js";
 import './Nav.css';
 
 
@@ -19,7 +19,8 @@ const Nav = () => {
     const splitLocation = pathname.split("/")
 
     useEffect(() => {
-        dispatch(getAllTemperaments())
+        dispatch(getAllTemperaments());
+        dispatch(allRatings());
     }, [])
 
 
