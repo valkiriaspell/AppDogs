@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ratingDogs } from "../Redux/actions";
+import { allRatings, ratingDogs } from "../Redux/actions";
 import { Container, Radio, Rating } from "./RatingStyles";
 import { AiOutlineHeart } from "react-icons/ai";
 import { useEffect } from "react";
@@ -19,20 +19,25 @@ const Rate = (props) => {
 
   const { rateDogs } = useSelector(state => state)
 
-  if (rateDogs.length){
-    var dogvoted = rateDogs.find(d => d.id === id)        
-}
-
- useEffect(() => {       
-   }, [rate,msg])
- 
-
+  
+  useEffect(() => {       
+  }, [rate,msg])
+  
+  
   const voting = (rating) => {    
     setRate(rating)
     dispatch(ratingDogs({id: id, votes:
-        rating}))
-    setMSG("Thanks for voting!")
-    setTimeout(() => {setMSG("Score:"+ dogvoted.votes/5 + " Total votes:" + dogvoted.totalVotes)}, 2000);    
+      rating}))
+    dispatch(allRatings())
+      
+      if (rateDogs){
+        var dogvoted = rateDogs.find(d => d.id === id)
+        console.log(dogvoted, "aqui dogsvoted del store")        
+        setMSG("Thanks for voting!")
+        setTimeout(() => {setMSG("Score:"+ dogvoted.votes/5 + " Total votes:" + dogvoted.totalVotes)}, 2000);    
+    } else {
+      setMSG("Thanks for voting!")
+    }
     }
     
 

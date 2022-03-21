@@ -4,8 +4,7 @@ const { Ratings } = require('../db.js')
 
 const ratingDog = async function (req, res, next) {
     const { id, votes } = req.body
-    try {       
-
+    try {      
         let dogFound = await Ratings.findOne({ where: { id: id } })
 
         if (!dogFound) {
@@ -26,10 +25,27 @@ const ratingDog = async function (req, res, next) {
             const update = await Ratings.update(newDog,{ where: { id: id } });
         }
         const allRating = await Ratings.findAll()
-        return res.json(allRating)
+        return res.send(allRating)
     } catch (e) {
         next(e)
     }
 }
 
-module.exports = ratingDog
+////////////////  ---->    all Dogs's Ratings    <------ /////////////////
+
+const allRateDog = async function (req, res, next) {
+    
+    try {      
+        const allRating = await Ratings.findAll()
+        return res.send(allRating)
+    } catch (e) {
+        next(e)
+        console.log(e)
+    }
+}
+
+module.exports = {
+    ratingDog,
+    allRateDog
+    
+};

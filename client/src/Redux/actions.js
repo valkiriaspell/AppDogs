@@ -15,17 +15,21 @@ export const sortDogs = (order) => {
     return ({type: SORT_DOGS, payload: order})
 }
 
-export const ratingDogs = (dog)=> async dispatch => {
+export const ratingDogs = (dog)=> dispatch => {
     console.log(dog, "aqui llega dog id with rating")
-    try{ 
-        const res = axios.post(`/rating`,dog)
-        console.log("votos enviados")  
-        return dispatch({ type: RATE_DOGS, payload: res.data })     
-        
-    } catch(e) {
-        console.log(e)        
-    }
-}
+       axios.post(`/rating`,dog)       
+       .catch(e=>console.log(e))        
+   }
+
+export const allRatings = ()=> dispatch => {    
+       axios.get(`/ratings`)
+       .then(r =>dispatch({ type: RATE_DOGS, payload: r.data }))
+       .catch(e=>console.log(e))        
+ }
+
+        // console.log(res, "respuesta pura")  
+        // console.log(res.data, "respuesta data")  
+        // return dispatch({ type: RATE_DOGS, payload: res.data })     
 
 export const getAllDogs = (name, order, source,temps) => async dispatch => {
     try{           
