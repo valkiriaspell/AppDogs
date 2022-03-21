@@ -88,6 +88,8 @@ dogs = {
 let totalPages = Math.ceil(dogs.count / 8)
 
 ////////////////  ---->    loveScore   <------ /////////////////
+//aqui no funciona, lo pase a dogCard
+
 // const dogsIds = dogs.result.map(d => d.id)// ["23","3","145","22","52","89"]
 
 // if (rateDogs){

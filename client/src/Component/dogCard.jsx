@@ -10,24 +10,24 @@ import { useEffect } from "react";
 
 function DogCard(props) {
 
-    const [rate, setRate] = useState(0)
+    
 
     const { rateDogs } = useSelector(state => state)
 
     var divStyle = { backgroundImage: 'url(' + props.image + ')', width: '300px' }
     
+    ////////////////  ---->    loveScore   <------ /////////////////
     if (rateDogs){
         console.log(rateDogs)
-        var dogVoted = rateDogs.find(d => d.id === props.id)
-        console.log(dogVoted, "aqui perro votado")
-          if (dogVoted){          
-          var loveScore = dogVoted.votes/dogVoted.totalVotes
-           setRate(loveScore.toFixed(2));
+        console.log( props.id)
+        var dog = rateDogs.findIndex(d => d.id === props.id.toString())
+        console.log(dog, "aqui index")
+          if (dog >= 0){          
+          var loveScore = rateDogs[dog].votes/rateDogs[dog].totalVotes  ;
           }
         }
     
-        useEffect(() => {              
-          }, [rate]) 
+      
 
     return (
         <div className='Card'>
