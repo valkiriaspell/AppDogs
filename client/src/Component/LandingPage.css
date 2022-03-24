@@ -9,4 +9,12 @@
 .landingBox {
     background-color: rgba(51, 14, 0, 0.836);    
 }
-
+@media screen and (max-width: 550px){
+    .landingText {
+        color: white;
+        font-size: 75px;
+        text-shadow: 0.1em 0.1em 0.2em black;
+        text-shadow: inset 0.5em 0.7em 0.8em black;
+        padding-top: 60px;
+    }
+}
