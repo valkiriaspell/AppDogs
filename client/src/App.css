@@ -21,6 +21,15 @@ a {
   width: 365px;
   z-index: 2;  
 }
+@media screen and (max-width: 550px){
+  .Home_dog {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 185px;
+    z-index: 2;  
+  }
+}
 .App-header {
   background-color: #282c34;
   min-height: 100vh;

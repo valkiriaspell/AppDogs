@@ -30,10 +30,10 @@ function About() {
       <ul className="social-icons">
         <li><a href="https://www.linkedin.com/in/valkiria-salerno-9860a6164/"><i><BsLinkedin /></i></a></li>
         <li><a href="https://github.com/valkiriaspell"><i><BsGithub /></i></a></li>
-        <li><a href="https://wa.link/724wn8"><i><BsWhatsapp /></i></a></li>               
+        <li><a href="https://walink.co/24411e"><i><BsWhatsapp /></i></a></li>               
       </ul>
       <a href="https://www.linkedin.com/in/valkiria-salerno-9860a6164"><button className="btn draw-border">Follow</button></a>
-      <a href="https://wa.link/724wn8"><button className="btn draw-border">Message</button></a>
+      <a href="https://walink.co/24411e"><button className="btn draw-border">Message</button></a>
     </div>
   </div>          
 }

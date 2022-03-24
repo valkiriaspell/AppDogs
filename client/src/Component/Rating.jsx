@@ -35,8 +35,9 @@ const Rate = (props) => {
         var dogvoted = rateDogs.find(d => d.id === id);
         console.log(dogvoted, "dogvoted")
         if (dogvoted){          
-          var loveScore = dogvoted.votes/dogvoted.totalVotes
-         setTimeout(() => {setMSG("Love Score: "+ loveScore.toFixed(2) + " Total votes: " + dogvoted.totalVotes)},2200);    
+          var votesNow = dogvoted.totalVotes+1
+          var loveScore = (dogvoted.votes+rating)/votesNow         
+         setTimeout(() => {setMSG("Love Score: "+ loveScore.toFixed(2) + " Total votes: " + votesNow)},2200);    
       } else {
         setTimeout(() => {setMSG("Love Score: "+ rating + " Total votes: " + 1)},2200);
       }

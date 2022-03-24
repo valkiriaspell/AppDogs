@@ -131,7 +131,13 @@
     display: flex;
     justify-content: center;
   }
-  
+  @media screen and (max-width: 520px){
+    .submit{
+      display: flex;
+      justify-content: center;
+      width: 50%;
+    }
+  }
 
 
   

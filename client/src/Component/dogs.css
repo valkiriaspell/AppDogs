@@ -12,6 +12,57 @@
   grid-template-columns: auto auto;
     
   }
+  .Filters{
+    margin-top: 16px;
+    font-size: 18px;
+    display: flex;
+    flex-direction: row;
+    color: rgb(115, 78, 57);
+    background-color: rgb(253 223 176);
+    border-radius: 0.5rem;
+    border: none;   
+    width: 450px;
+    padding: 7px;
+    justify-content: space-around;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.637);
+    margin-bottom: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  @media screen and (max-width: 550px){
+    .Home {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 240px;
+      
+    }
+    .filterAndOrders{
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;      
+    }
+    .Filters{
+      margin-top: 16px;
+      font-size: 18px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      width: 50%;    
+    }
+    .Filters label{
+      margin-bottom: 12px;
+          
+    }
+    .Filters div{
+      margin-bottom: 12px;
+          
+    }
+  }
 .searchAndPages{
   display: grid;
   grid-template-columns: auto auto auto;
@@ -25,23 +76,6 @@
   
 }
 
-.Filters{
-  margin-top: 16px;
-  font-size: 18px;
-  display: flex;
-  flex-direction: row;
-  color: rgb(115, 78, 57);
-  background-color: rgb(253 223 176);
-  border-radius: 0.5rem;
-  border: none;   
-  width: 450px;
-  padding: 7px;
-  justify-content: space-around;
-  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.637);
-  margin-bottom: 20px;
-  margin-left: 10px;
-  margin-right: 10px;
-}
 .Filters select {
   border: none; 
   font-family: 'Roboto Slab', sans-serif;
