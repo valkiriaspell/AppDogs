@@ -14,10 +14,11 @@
 }
 @media screen and (max-width: 550px){
   .container {
-    margin-top: 110px;
+    
     display: flex;
     flex-direction: column;
-    margin-top: 470px;
+    margin-top: 410px;
+    font-size: 14px;
   }
 }
 
@@ -45,7 +46,7 @@
 .imageBox {
   display: flex;
   size: 1em;
-  position: relative;
+  
   flex-direction: row;  
 }
 
@@ -56,15 +57,17 @@
 }
 @media screen and (max-height: 550px) { 
   .imageBox {
+    
     display: flex;
-    size: 0.5em;    
-    position: relative;
-    flex-direction: row;  
+    size: 0.5em;     
+    flex-direction: column;  
   }
 }
 @media screen and (max-height: 1700px) { 
   #photo{
-    height:400px;  
+    height:400px;
+    padding: 1em; 
+     
 }
 }
 .draw-border {

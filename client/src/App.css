@@ -22,6 +22,17 @@ a {
   z-index: 2;  
 }
 @media screen and (max-width: 550px){
+  .App {
+    text-align: center;
+    background-image: url(./images/fondo-PIDOGS.png);
+    background-repeat: repeat-y;
+    background-size:auto ;      
+    width: auto;
+    min-height: 125vh;
+    font-family: 'Josefin Sans', sans-serif;
+    color: white;
+    
+  }
   .Home_dog {
     position: fixed;
     top: 0;
