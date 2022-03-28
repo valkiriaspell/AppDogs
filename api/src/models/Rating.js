@@ -12,6 +12,7 @@ module.exports = (sequelize) => {
     },
     totalVotes: {
       type: DataTypes.INTEGER
+      
     }
   },{
       timestamps: false       

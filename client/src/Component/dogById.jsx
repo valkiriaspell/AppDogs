@@ -28,6 +28,7 @@ const DogById = (props) => {
     }, [dispatch, id])
 
     var divStyle = { backgroundImage: 'url(' + dog.image + ')' }
+    
 
     return (
         <div className="dogDetail">
