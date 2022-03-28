@@ -7,13 +7,15 @@ const saveTemps = async () => {
         let response = await axios(`https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}`);              
         response = response.data;    
         let temps = response.map(dog => dog.temperament).reduce((pre, cur) => pre.concat(cur)).split(", ");
+
+        // ahora tengo un array de strings donde hay repetidos ["friendly","cheerful","friendly", "etc"] 
         let uniqueTemps = [];
         for (let i = 0; i < temps.length; i++){
             if (!uniqueTemps.includes(temps[i])) {
                 uniqueTemps.push(temps[i])
             }            
         }
-        // hasta aqui, uniqueTemps es un array de strings ["friendly","cheerful","etc"] 
+        // uniqueTemps ya no tiene repetidos
         let newTemps = uniqueTemps.map(t=>{
             return {
                 name: t,               
@@ -28,6 +30,8 @@ const saveTemps = async () => {
         console.log(error)
      }
 }
+
+
 const getTemps = async (req, res, next) => {
     try {
 let temps = await Temperaments.findAll()

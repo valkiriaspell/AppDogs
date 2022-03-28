@@ -35,7 +35,7 @@
       flex-direction: column;
       justify-content: space-between;
       align-items: center;
-      margin-top: 240px;
+      margin-top: 24px;
       
     }
     .filterAndOrders{
@@ -66,13 +66,13 @@
 .searchAndPages{
   display: grid;
   grid-template-columns: auto auto auto;
-  color: rgb(77, 49, 17);
+  color: #341b00;
   
 }
 .BuscadoryAdd {
   margin-top: 20px;
   font-size: 22px;
-  text-shadow: 0.1em 0.1em 0.2em rgba(255, 255, 255, 0.89);
+  text-shadow: 0.1em 0.1em 0.2em #a14b02;
   
 }
 

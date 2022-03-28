@@ -24,7 +24,7 @@ function About() {
         <li><SiExpress /></li>
         
       </ul>
-      <p className="secTitle">Front End Developer</p>   
+      <p className="secTitle">Full Stack Developer</p>   
       <p className="secTitle">UI/UX Designer</p>         
       
       <ul className="social-icons">
