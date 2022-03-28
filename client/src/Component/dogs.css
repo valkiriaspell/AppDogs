@@ -66,13 +66,13 @@
 .searchAndPages{
   display: grid;
   grid-template-columns: auto auto auto;
-  color: #341b00;
+  color: #ffffff;
   
 }
 .BuscadoryAdd {
   margin-top: 20px;
   font-size: 22px;
-  text-shadow: 0.1em 0.1em 0.2em #a14b02;
+  text-shadow: 0.1em 0.1em 0.2em #793902;
   
 }
 
