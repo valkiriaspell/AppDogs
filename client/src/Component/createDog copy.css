@@ -7,12 +7,7 @@
   }
   .formDog {
     font-size: 18px;
-    align-self: center;
-    align-content: center;  
-    display: flex;
-    padding-top: 50px;
-    text-align: left;
-    flex-direction: column;    
+   
     background: rgba(0, 0, 0, 0.76);
     width: 500px;
     margin: auto;
