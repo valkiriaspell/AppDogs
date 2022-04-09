@@ -88,26 +88,6 @@ dogs = {
 
 let totalPages = Math.ceil(dogs.count / 8)
 
-////////////////  ---->    loveScore   <------ /////////////////
-//aqui no funciona, lo pase a dogCard
-
-// const dogsIds = dogs.result.map(d => d.id)// ["23","3","145","22","52","89"]
-
-// if (rateDogs){
-//   let i = 0;
-//   let loveScores = []
-//   while (i < dogsIds.length) {
-//     for(let j = 0; j < rateDogs.length; j++) {
-//       var dogFound = rateDogs.find(d => d.id === dogsIds[i]);
-//       dogFound?loveScores.push(dogFound): null;
-//       i++
-//     }
-//   }
-//   if (dogvoted){          
-//   var loveScore = dogvoted.votes/dogvoted.totalVotes
-//    setRate(loveScore.toFixed(2));
-//   }
-// } 
 
   return (
     <div className="Home">

@@ -35,7 +35,7 @@
       flex-direction: column;
       justify-content: space-between;
       align-items: center;
-      margin-top: 24px;
+      margin-top: 235px;      
       
     }
     .filterAndOrders{
@@ -43,7 +43,7 @@
       flex-direction: column;
       justify-content: space-between;
       align-items: center;
-      width: 100%;      
+      width: 160%;      
     }
     .Filters{
       margin-top: 16px;
@@ -56,11 +56,15 @@
     }
     .Filters label{
       margin-bottom: 12px;
+      margin-right: 18px;          
           
     }
     .Filters div{
       margin-bottom: 12px;
-          
+      display: flex;
+      flex-direction: row;
+      margin: 5px;
+      justify-content: space-around;
     }
   }
 .searchAndPages{
